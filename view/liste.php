@@ -14,7 +14,7 @@
     <ol><b>Ma page secondaire</b>
         <li><a href="formulaire.html">Formulaire de Contact</a></li>
         <li><a href="admin.html">Page admin</a></li>
-        <li><a href="serv.php">Page PHP</a></li>
+        <li><a href="../Control/serv.php">Page PHP</a></li>
     </ol>
 </body>
 </html>
