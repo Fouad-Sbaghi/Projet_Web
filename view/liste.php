@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Titre de la page</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <h1>Arborescence de mon site web</h1>
