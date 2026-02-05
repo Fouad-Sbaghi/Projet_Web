@@ -9,3 +9,10 @@ Faire un shéma de classe aussi (table)
 tout en mcv
 page contact en php
 faq a faire
+
+
+
+
+Je veux faire un Portfollio car c'est important d'en avoir un pour les futurs emploie, projets. Au final nous ferons un site qui fait des Portfollio à des utilisateurs pour rester dans le Projet. La cible sera les étudiants ou personne en recherches d'emploie. 
+
+Tout d'abord avant de commencer le projet, moi et Fouad avons préparé l'environnement pour bien faire le projet. Premièrement on commence par une connexion ssh sur Vscode. Puis on installe un projet github en commun et on installe git pour syncrhoniser nos 2 projets.  

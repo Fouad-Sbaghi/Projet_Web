@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Titre de la page</title>
+  <title>Mon Portfollio
+  </title>
   <link rel="stylesheet" href="View/style.css">
 </head>
 <main>
