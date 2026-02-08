@@ -6,8 +6,9 @@
 </head>
 <main>
     <body>
+        <?php include("header.php"); ?>
         <h1>Ma page présentation</h1>
-        <a href="page.html">Page principal</a>
+        <a href="page.php">Page principal</a>
     </body>
 </main>
 </html>

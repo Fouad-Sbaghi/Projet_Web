@@ -1,12 +1,9 @@
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Titre de la page</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-        <div class="banniere">
-        <h1><?php echo $titre?></h1>
-        <h2>Mon HEADER</h2>
-    </header>
+<header>
+    <div class="banniere">
+      <nav>
+        <a href="index.php">Accueil</a>
+        <a href="formulaire.php">Formulaire</a>
+        <a href="liste.php">Rechercher des CV</a>
+      </nav>
+    </div>
+</header>

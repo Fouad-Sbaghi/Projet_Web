@@ -7,7 +7,7 @@
 <main>
     <body>
         <h1>ADMIN</h1>
-        <a href="page.html">Page principal</a>
+        <a href="page.php">Page principal</a>
     </body>
 </main>
 </html>

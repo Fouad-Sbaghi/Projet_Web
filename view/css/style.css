@@ -6,8 +6,35 @@ h1 {
     margin-left: 40%;
 }
 
-/*
-.banniere {
-     background-color: blue; 
+
+
+
+header {
+    background-color: rgb(5, 48, 129);
+    padding: 2rem 0;
+    box-shadow: 0 10px 50px rgb(2, 4, 42);
+    
 }
-*/
+
+
+.banniere {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+
+}
+
+nav a {
+    margin-left: 15rem;
+    font-size: 1.5rem;
+    color: aliceblue;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background 0.2s;
+}
+
+nav a:hover {
+    background: rgb(202, 43, 67);
+}

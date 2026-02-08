@@ -8,7 +8,7 @@
 <body>
     <main>
     <h1>Nous Contactez !</h1>
-    <a href="page.html">Page principal</a>
+    <a href="page.php">Page principal</a>
     </main>
 </body>
 </html>
