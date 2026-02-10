@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulaire-contact</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <main>
     <h1>Nous Contactez !</h1>
-    <a href="page.html">Page principal</a>
+    <a href="page.php">Page principal</a>
     </main>
 </body>
 </html>

@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Titre de la page</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <main>
+    <?php include("header.php") ?>
     <div class="banniere">
     <h1>Mon Portefolio</h1>
       <hr>
@@ -14,9 +15,9 @@
     <h2>Nassim Benchenni</h2>
     <h3>Projet Web</h3>
     <h4>CV</h4>
-    <a href="presentation.html"> Ma page présentation</a>
+    <a href="presentation.php"> Ma page présentation</a>
     <br>
-    <a href="liste.html" *>Mon Arborescence</a>
+    <a href="liste.php" *>Mon Arborescence</a>
   </main>
 <footer>
   <a>DATE :</a>
