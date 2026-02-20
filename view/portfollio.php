@@ -1,5 +1,5 @@
-<?php
-$titre = "Mon PortFollio";
+<main>
 
-$varhtml = "<p>Il y a bcp de cv</p>";
-?>
+
+
+</main>

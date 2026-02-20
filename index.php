@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="view/css/style.css">
 </head>
   <body>
+    <?php include 'view/header.php'; ?>
     <header>
       <div class="banniere">
         <nav>
