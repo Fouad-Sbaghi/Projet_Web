@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Arborescence de mon site web</h1>
+    <?php include("header.php") ?>
     <hr>
     <ul><a href="page.php">Ma page principale</a>
         <li><a href="presentation.php">Ma page présentation</a></li>

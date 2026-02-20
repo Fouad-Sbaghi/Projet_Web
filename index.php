@@ -17,11 +17,13 @@
         </nav>
       </div>
     </header>
-    <h1>Mon Portfollio</h1>
-      <hr>
-    <h2>Nassim Benchenni</h2>
-    <h3>Projet Web</h3>
-    <h4>CV</h4>
+    <div class="sous_banniere">
+      <h1>Voir les Portfollios</h1>
+      <h2>Des Millions de CV</h2>
+      <h3>le site N°1 </h3>
+      <h4>CV</h4>
+    </div>
+    <hr>
     <a href="view/presentation.php"> Ma page présentation</a>
     <br>
     <a href="view/liste.php">Mon Arborescence</a>

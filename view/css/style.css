@@ -2,12 +2,6 @@ li {
     margin-left: 30px;
 }
 
-h1 {
-    margin-left: 40%;
-}
-
-
-
 
 header {
     background-color: rgb(5, 48, 129);
@@ -21,7 +15,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 
 }
 
@@ -37,4 +30,10 @@ nav a {
 
 nav a:hover {
     background: rgb(202, 43, 67);
+}
+
+.sous_banniere {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
 }

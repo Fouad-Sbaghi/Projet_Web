@@ -20,7 +20,7 @@ Tout d'abord avant de commencer le projet, moi et Fouad avons préparé l'enviro
 
 Page de présentation : Un "À propos" dynamique qui présente votre parcours.
 
-Affichage des projets : Une page listant vos réalisations (récupérées en base de données).
+"Affichage des projets : Une page listant vos réalisations (récupérées en base de données)."
 
 Page de détail : Si je clique sur un projet, j'arrive sur une page dédiée (projet.php?id=3) avec une description longue.
 
