@@ -9,15 +9,6 @@
 </head>
   <body>
     <?php include 'view/header.php'; ?>
-    <header>
-      <div class="banniere">
-        <nav>
-          <a href="index.php">Accueil</a>
-          <a href="view/formulaire.php">Formulaire</a>
-          <a href="view/liste.php">Rechercher des CV</a>
-        </nav>
-      </div>
-    </header>
     <div class="sous_banniere">
       <h1>Voir les Portfollios</h1>
       <h2>Des Millions de CV</h2>
