@@ -1,5 +1,5 @@
 <footer>
-  <a>DATE :</a>
+  <p>DATE :</p>
   <p>Auteur</p>
 </footer>
 </body>

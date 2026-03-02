@@ -59,6 +59,12 @@ header {
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
+/* RECHERCHE CV */
+
+.cv {
+    background-color: rgb(26, 87, 141);
+}
+
 /* FORMULAIRE */
 
 .form1 {
@@ -81,7 +87,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 70vh;
 }
 
 /* FOOTER */
