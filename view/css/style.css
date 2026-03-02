@@ -11,16 +11,15 @@ header {
     
 }
 
-
 .banniere {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
+    justify-content: space-between;
+    padding: 2rem;
 }
 
-nav a {
-    margin-left: 15rem;
+.banniere .w3-bar-item {
+    margin: 0 2rem;
     font-size: 1.5rem;
     color: aliceblue;
     text-decoration: none;
@@ -29,7 +28,7 @@ nav a {
     transition: background 0.2s;
 }
 
-nav a:hover {
+.banniere .w3-bar-item:hover {
     background: rgb(202, 43, 67);
 }
 
@@ -37,6 +36,27 @@ nav a:hover {
     display: flex;
     text-align: center;
     flex-direction: column;
+}
+
+/* MOBILE (responsive)*/
+.banniere-mobile {
+    color: white;
+    padding: 0 1rem;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#demo a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 /* FORMULAIRE */
@@ -84,4 +104,4 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
+}   
