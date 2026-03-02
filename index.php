@@ -3,11 +3,13 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mon Portfollio
   </title>
   <link rel="stylesheet" href="view/css/style.css">
 </head>
   <body>
+    <?php $racine = ""; ?>
     <?php include 'view/header.php'; ?>
     <div class="sous_banniere">
       <h1>Voir les Portfollios</h1>
@@ -16,13 +18,10 @@
       <h4>CV</h4>
     </div>
     <hr>
-    <a href="view/presentation.php"> Ma page présentation</a>
-    <br>
-    <a href="view/liste.php">Mon Arborescence</a>
+    <img src="view/images/OIP.jpg" class="image1">
   </body>
 <footer>
   <a>DATE :</a>
   <p>Auteur</p>
 </footer>
 </html>
-<?php echo "Enfin en ligne !"; ?>
