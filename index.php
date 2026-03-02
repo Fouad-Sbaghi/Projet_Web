@@ -15,7 +15,6 @@
       <h1>Voir les Portfollios</h1>
       <h2>Des Millions de CV</h2>
       <h3>le site N°1 </h3>
-      <h4>CV</h4>
     </div>
     <hr>
     <img src="view/images/OIP.jpg" class="image1">
