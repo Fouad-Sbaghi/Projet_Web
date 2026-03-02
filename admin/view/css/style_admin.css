@@ -9,3 +9,48 @@ form {
   align-items: center;
   height: 100vh;
 }
+
+/* --- RESPONSIVE MOBILE --- */
+@media screen and (max-width: 768px) {
+  .w3-sidebar {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+  }
+  div[style*="margin-left:20%"] {
+    margin-left: 0 !important;
+  }
+}
+
+/* --- TRANSFORMATION DES TABLEAUX EN "CARTES" SUR MOBILE --- */
+@media screen and (max-width: 768px) {
+  table.w3-table-all,
+  .w3-table-all tbody,
+  .w3-table-all tr,
+  .w3-table-all td {
+    display: block;
+    width: 100%;
+  }
+
+  .w3-table-all thead {
+    display: none;
+  }
+
+  .w3-table-all tr {
+    margin-bottom: 20px;
+    border: 2px solid #ccc !important;
+    border-radius: 8px;
+    background-color: #fff !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .w3-table-all td {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding: 12px !important;
+  }
+
+  .w3-table-all td:last-child {
+    border-bottom: none;
+  }
+}
