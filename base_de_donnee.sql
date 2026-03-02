@@ -13,4 +13,4 @@ CREATE TABLE faq (
     id SERIAL PRIMARY KEY,
     question TEXT,
     reponse TEXT
-);
+); 

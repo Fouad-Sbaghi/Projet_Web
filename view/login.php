@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="view/css/style_admin.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <title>Login Utilisateur</title>
-</head>
-
-<body>
-
+<main>
   <form action="utilisateur.php" method="POST" class="form2">
     <h1>Connexion Client</h1>
 
@@ -23,7 +11,4 @@
     <br>
     <input type="submit" value="Se connecter">
   </form>
-
-</body>
-
-</html>
+</main>
