@@ -1,16 +1,33 @@
--- Création de la table Utilisateurs avec héritage logique (Admin/Client)
-CREATE TABLE utilisateurs (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(50),
-    prenom VARCHAR(50),
-    login VARCHAR(50) UNIQUE,
-    password VARCHAR(255),
-    role VARCHAR(20) -- 'admin' ou 'client'
+-- Création de la table UTILISATEURS (Corrigée pour coller à l'UML)
+CREATE TABLE UTILISATEURS (
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    mot_de_passe VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL, 
+    filiere VARCHAR(150), 
+    lien_linkedin VARCHAR(255), -- Ajouté pour correspondre à l'UML
+    telephone_pro VARCHAR(20)   -- Ajouté pour correspondre à l'UML
 );
 
--- Table pour la FAQ demandée dans le sujet
-CREATE TABLE faq (
-    id SERIAL PRIMARY KEY,
-    question TEXT,
-    reponse TEXT
-); 
+-- Création de la table PROJETS
+CREATE TABLE PROJETS (
+    id_projet INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT NOT NULL,
+    titre VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    image_url VARCHAR(255),
+    FOREIGN KEY (id_user) REFERENCES UTILISATEURS(id_user) ON DELETE CASCADE
+);
+
+-- Création de la table FAQ
+CREATE TABLE FAQ (
+    id_faq INT AUTO_INCREMENT PRIMARY KEY,
+    question TEXT NOT NULL,
+    reponse TEXT NOT NULL
+);
+
+
+
+
