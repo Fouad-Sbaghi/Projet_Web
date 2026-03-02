@@ -1,5 +1,7 @@
 <?php
 
+$racine = "../";
+
 include '../view/header.php'; 
 
 include '../view/login.php';

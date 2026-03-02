@@ -9,9 +9,9 @@
 <header>
     <div class="banniere">
       <nav>
-        <a href="<?php echo $racine?>/index.php">Accueil</a>
-        <a href="control/contact.php">Contact</a>
-        <a href="control/recherche_cv.php">Rechercher des CV</a>
+        <a href="<?php echo $racine ?>index.php">Accueil</a>
+        <a href="<?php echo $racine ?>control/contact.php">Contact</a>
+        <a href="<?php echo $racine ?>control/utilisateur.php">Login</a>
       </nav>
     </div>
 </header>

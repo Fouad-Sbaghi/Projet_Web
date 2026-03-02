@@ -54,6 +54,16 @@ nav a:hover {
     text-align: center;
 }
 
+/* FORMULAIRE LOGIN */
+
+.form2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 /* FOOTER */
 
 footer {
@@ -66,4 +76,12 @@ footer {
 
 body {
     margin: 0;
+}
+
+/* Images */
+
+.image1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
