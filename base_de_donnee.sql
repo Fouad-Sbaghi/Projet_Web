@@ -1,23 +1,28 @@
 -- Création de la table UTILISATEURS
+
+--DROP TABLE IF EXISTS PROJETS;
+--DROP TABLE IF EXISTS FAQ;
+--DROP TABLE IF EXISTS UTILISATEURS;
+
 CREATE TABLE UTILISATEURS (
     id_user SERIAL PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     prenom VARCHAR(100) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    mot_de_passe VARCHAR(255) NOT NULL,
-    role VARCHAR(50) NOT NULL, 
-    filiere VARCHAR(150), 
-    lien_linkedin VARCHAR(255),
-    telephone_pro VARCHAR(20)
+    email VARCHAR(100) NOT NULL UNIQUE,
+    mot_de_passe VARCHAR(100) NOT NULL,
+    role VARCHAR(100) NOT NULL, 
+    filiere VARCHAR(100), 
+    lien_linkedin VARCHAR(100),
+    telephone_pro VARCHAR(13)
 );
 
 -- Création de la table PROJETS
 CREATE TABLE PROJETS (
     id_projet SERIAL PRIMARY KEY,
     id_user INT NOT NULL,
-    titre VARCHAR(255) NOT NULL,
+    titre VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
-    image_url VARCHAR(255),
+    image_url VARCHAR(100),
     FOREIGN KEY (id_user) REFERENCES UTILISATEURS(id_user)
 );
 
@@ -28,12 +33,3 @@ CREATE TABLE FAQ (
     reponse TEXT NOT NULL
 );
 
-/*
-psql etd
-\d projets
-\d faq
-\d UTILISATEURS
-select * from projets;
-select * from FAQ;
-select * from UTILISATEURS;
-/*
