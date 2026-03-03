@@ -27,3 +27,13 @@ CREATE TABLE FAQ (
     question TEXT NOT NULL,
     reponse TEXT NOT NULL
 );
+
+/*
+psql etd
+\d projets
+\d faq
+\d UTILISATEURS
+select * from projets;
+select * from FAQ;
+select * from UTILISATEURS;
+/*
