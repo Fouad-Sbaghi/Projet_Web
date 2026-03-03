@@ -10,8 +10,9 @@
 </head>
 
 <body class="w3-light-grey">
-
-    <div class="w3-bar w3-dark-grey w3-padding">
+    <!-- Barre de navigation  et w3-padding sert à ajouter de l'espace dans la barre -->
+    <div class="w3-bar w3-dark-grey w3-padding barre-haut">
+        <!-- span permet de cibler un élement-->
         <span class="w3-bar-item w3-large">Administration</span>
         <a href="../index.php" class="w3-bar-item w3-button w3-right">Déconnexion</a>
     </div>

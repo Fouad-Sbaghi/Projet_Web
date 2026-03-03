@@ -1,8 +1,8 @@
 <?php
 // Données en dur
 $liste_portfolios = [
-    ['id' => 1, 'titre' => 'Site E-commerce', 'etudiant' => 'Fouad Sbaghi'],
-    ['id' => 2, 'titre' => 'Application Mobile', 'etudiant' => 'Nassim Benchenni']
+    ['id' => 1, 'titre' => 'Informatique', 'etudiant' => 'Fouad Sbaghi'],
+    ['id' => 2, 'titre' => 'Architecte', 'etudiant' => 'Nassim Benchenni']
 ];
 
 include "../view/header.php";

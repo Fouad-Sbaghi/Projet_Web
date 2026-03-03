@@ -1,7 +1,7 @@
-<div class="w3-container w3-white w3-card w3-padding-24">
+<div class="w3-container w3-white w3-card w3-padding">
     <h2>Envoyer un mail aux utilisateurs</h2>
 
-    <form class="w3-container" action="#" method="POST">
+    <form class="w3-container" method="POST">
         <label>Sujet du mail</label>
         <input class="w3-input w3-border w3-margin-bottom" type="text" name="sujet">
 

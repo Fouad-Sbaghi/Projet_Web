@@ -11,58 +11,40 @@ form {
 }
 
 footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgb(5, 48, 129);
-  margin-top: 30rem;
+  color: white;
+  margin-top: auto; /*ça pousse le footer tout en bas */
+  position: relative;
+  z-index: 2; /* il s'affiche bien par-dessus le reste */
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Le corps du site prend au moins toute la hauteur de l'écran */
   margin: 0;
 }
 
-/* --- RESPONSIVE MOBILE --- */
-@media screen and (max-width: 768px) {
-  .w3-sidebar {
-    width: 100% !important;
-    height: auto !important;
-    position: relative !important;
-  }
-  div[style*="margin-left:20%"] {
-    margin-left: 0 !important;
-  }
+.sidebar {
+  width: 20%;
+  height: 100vh;
+}
+/* --- pour ne pas toucher la sidebare --- */
+.main-content {
+  margin-left: 20%;
 }
 
-/* --- TRANSFORMATION DES TABLEAUX EN "CARTES" SUR MOBILE --- */
+/* On décale la barre du haut pour ne pas passer sous le menu */
+.barre-haut {
+  margin-left: 20%;
+  width: 80%;
+}
+
+/* --- Responsive mobile --- */
 @media screen and (max-width: 768px) {
-  table.w3-table-all,
-  .w3-table-all tbody,
-  .w3-table-all tr,
-  .w3-table-all td {
-    display: block;
-    width: 100%;
-  }
-
-  .w3-table-all thead {
-    display: none;
-  }
-
-  .w3-table-all tr {
-    margin-bottom: 20px;
-    border: 2px solid #ccc !important;
-    border-radius: 8px;
-    background-color: #fff !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .w3-table-all td {
-    text-align: center;
-    border-bottom: 1px solid #eee;
-    padding: 12px !important;
-  }
-
-  .w3-table-all td:last-child {
-    border-bottom: none;
-  }
+  .w3-sidebar { width: 100% !important; height: auto !important; position: relative !important; }
+  
+  .main-content { margin-left: 0 !important; }
+  
+  /* barre reprenne 100% sur téléphone */
+  .barre-haut { margin-left: 0 !important; width: 100% !important; }
 }

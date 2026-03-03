@@ -18,7 +18,7 @@ CREATE TABLE PROJETS (
     titre VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     image_url VARCHAR(255),
-    FOREIGN KEY (id_user) REFERENCES UTILISATEURS(id_user) ON DELETE CASCADE
+    FOREIGN KEY (id_user) REFERENCES UTILISATEURS(id_user)
 );
 
 -- Création de la table FAQ

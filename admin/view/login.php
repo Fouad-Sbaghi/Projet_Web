@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+  <!-- Simple login form sans verif -->
   <form action="control/dashboard.php" method="POST">
     <h1>Connexion BackOffice</h1>
 
