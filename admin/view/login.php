@@ -10,7 +10,7 @@
 
 <body>
   <!-- Simple login form sans verif -->
-  <form action="control/dashboard.php" method="POST">
+  <form action="control/dashboard.php">
     <h1>Connexion BackOffice</h1>
 
     <label for="user">Nom Utilisateur:</label><br>
