@@ -2,6 +2,8 @@
 
 $racine = "../";
 
+include "../model/data.php";
+
 include '../view/header.php'; 
 
 include '../view/cv.php';

@@ -60,8 +60,44 @@ header {
 
 /* RECHERCHE CV */
 
-.cv {
-    background-color: rgb(26, 87, 141);
+.cv-main {
+  display: flex;
+  flex-wrap: wrap; /* Force le repliement des éléments excédentaires */
+  justify-content: center; /* Attraction centripète (centrage horizontal) */
+  gap: 32px; /* Répulsion stérique entre les éléments */
+  max-width: 750px; /* Limite l'espace à environ 2 CV de 350px + le gap */
+  margin: 0 auto; /* Centre la matrice entière sur l'écran */
+}
+
+/* Le Phénotype Cellulaire (Carte individuelle) */
+.cv-card {
+  width: 350px;
+  flex: 0 1 350px; /* Empêche l'hypertrophie au-delà de 350px */
+}
+
+/* Restauration de l'homéostasie visuelle de l'image */
+.cv-card img {
+  width: 50%;
+  display: block;
+  margin: 16px auto; /* Centre le noyau visuel (image) dans la carte */
+}
+
+.cv-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.cv-card {
+  width: 350px;
+  text-decoration: none; /* Élimine l'altération visuelle du lien */
+  color: inherit;
+  transition: transform 0.2s ease; /* Effet de réponse tactile */
+}
+.cv-card:hover {
+  transform: scale(1.02); /* Réponse hormonale au survol */
 }
 
 /* FORMULAIRE */
