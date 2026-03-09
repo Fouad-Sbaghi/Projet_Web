@@ -9,7 +9,7 @@
 <body>
 
 <div class="w3-bar w3-indigo w3-card banniere">
-  <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="toggleMobileMenu()">&#9776;</a>
+  <a class="w3-bar-item w3-button w3-hide-large w3-hide-medium" onclick="toggleMobileMenu()">&#9776;</a>
   
   <a href="<?php echo $racine ?>index.php" class="w3-bar-item  w3-hide-small">Accueil</a>
   <a href="<?php echo $racine ?>control/recherche_cv.php" class="w3-bar-item w3-hide-small">Recherche des CV</a>
