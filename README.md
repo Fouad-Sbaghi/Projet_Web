@@ -56,3 +56,24 @@ admin
     - control
 
 Utilisation de VScode, PHP, css, PostgreSQL, Html, Apache
+
+namespace obligatoire
+-PDO
+-interface
+-classe regroupé
+-transacation
+-bindValue, sql->exec
+
+admin/
+├── class/
+│   ├── Utilisateur.php
+│   ├── Etudiant.php
+│   ├── Administrateur.php
+│   ├── Projet.php
+│   └── Faq.php
+├── interface/
+│   ├── UtilisateurInterface.php
+│   ├── EtudiantInterface.php
+│   ├── AdministrateurInterface.php
+│   ├── ProjetInterface.php
+│   └── FaqInterface.php
