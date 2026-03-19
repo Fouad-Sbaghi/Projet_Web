@@ -7,4 +7,12 @@
             <p><?= htmlspecialchars($cv['poste']) ?></p>
         </div>
     </div>
+    <div class="w3-display-middle">
+        <p> Etudiant a l'univertsitéé d'avignon .................................................................................</p>
+    </div>
+    <div class="w3-display-middle">
+        <a href="">Lien likedin</a>
+        <a href="">Lien Projet</a>
+    </div>
+    
 </main>

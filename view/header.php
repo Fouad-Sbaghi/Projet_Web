@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <link rel="stylesheet" href="<?php echo $racine ?>view/css/style.css">
+  <script src="<?php echo $racine ?>view/javascript/menu.js"></script>
 </head>
 <body>
 
@@ -26,13 +27,3 @@
   <a href="<?php echo $racine ?>control/utilisateur.php" class="w3-bar-item w3-button">Login</a>
 </div>
 
-<script>
-function toggleMobileMenu() {
-  var x = document.getElementById("mobileMenu");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>

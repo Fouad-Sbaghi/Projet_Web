@@ -2,9 +2,8 @@
 
 $racine = "../";
 
+// fichier Data
 include "../model/data.php";
-
-// tableau de CV
 
 // Récupérer l'id depuis l'URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
