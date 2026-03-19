@@ -1,4 +1,4 @@
-<div class="w3-container w3-white w3-card w3-padding-24">
+<div class="w3-container w3-white w3-card w3-padding">
     <h2>Gestion de la FAQ</h2>
     <button class="w3-button w3-green w3-margin-bottom">Ajouter une question</button>
 

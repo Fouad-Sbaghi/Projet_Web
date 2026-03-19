@@ -1,6 +1,6 @@
 <?php
 $liste_faq = [
-    ['id' => 1, 'question' => 'Comment ajouter un projet ?', 'reponse' => 'Allez dans Gestion Portfolios.'],
+    ['id' => 1, 'question' => 'Comment voir les projets ?', 'reponse' => 'Rendez-vous dans la section "Recherche" du menu.'],
     ['id' => 2, 'question' => 'Mot de passe oublié ?', 'reponse' => 'Contactez un administrateur.']
 ];
 
