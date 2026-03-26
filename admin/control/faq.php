@@ -1,5 +1,5 @@
 <?php
-require_once '../class/Autoloader.php';
+require_once '../classes/Autoloader.php';
 Autoloader::enregistrer();
 
 use model\FaqModel;

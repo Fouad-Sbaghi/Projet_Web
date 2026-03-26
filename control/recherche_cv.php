@@ -13,8 +13,6 @@ use model\ProjetModel;
 $projetModel = new ProjetModel();
 $liste_projets = $projetModel->getAllProjets();
 
-include "../model/data.php";
-
 include '../view/header.php'; 
 
 include '../view/cv.php';

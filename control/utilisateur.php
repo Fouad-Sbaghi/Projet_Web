@@ -4,7 +4,7 @@
 $racine = "../";
 
 // 1. Appel de l'Autoloader au tout début !
-require_once '../class/Autoloader.php';
+require_once '../admin/classes/Autoloader.php';
 Autoloader::enregistrer();
 
 // 2. On indique qu'on va utiliser ces classes

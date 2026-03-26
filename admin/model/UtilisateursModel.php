@@ -32,6 +32,4 @@ class UtilisateursModel
             throw new UtilisateurException("Mot de passe incorrect.");
         }
     }
-
-    // Vous ajouterez ici plus tard : ajouterUtilisateur(), modifierProfil(), supprimerCompte()
 }
