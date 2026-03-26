@@ -9,27 +9,29 @@ class UtilisateursModel
 {
 
     // Méthode pour vérifier la connexion
-    public function verifierConnexion($email, $motDePasse)
-    {
-        $conn = Database::getConnexion();
-
-        // On cherche l'utilisateur par son email (ici j'utilise l'email comme "user" pour se connecter)
+    public function verifierConnexion($email, $pass) {
+        // ... (votre code d'avant)
         $sql = "SELECT * FROM UTILISATEURS WHERE email = :email";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':email', $email);
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindValue(':email', $email);
         $stmt->execute();
+        
+        // --- LA MODIFICATION EST ICI ---
+        // On demande à PDO de nous renvoyer un objet 'Utilisateur'
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'classes\Utilisateur');
+        $utilisateur = $stmt->fetch();
 
-        $user = $stmt->fetch(\PDO::FETCH_CLASS);
-
-        // Si aucun utilisateur n'est trouvé
-        if (!$user) {
-            throw new UtilisateurException("Cet utilisateur n'existe pas.");
-        }
-
-        if ($motDePasse === $user['mot_de_passe'] || password_verify($motDePasse, $user['mot_de_passe'])) {
-            return $user; // On retourne les infos de l'utilisateur
+        // Si l'utilisateur existe
+        if ($utilisateur) {
+            // (La vérification du mot de passe dépend de si vous l'avez hashé ou non en BDD)
+            // Si c'est en clair pour l'instant (à changer plus tard pour la sécurité) :
+            if ($pass === $utilisateur->mot_de_passe) { 
+                return $utilisateur; // On retourne l'OBJET
+            } else {
+                throw new UtilisateurException("Mot de passe incorrect.");
+            }
         } else {
-            throw new UtilisateurException("Mot de passe incorrect.");
+            throw new UtilisateurException("Utilisateur non trouvé.");
         }
     }
 }

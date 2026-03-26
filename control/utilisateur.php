@@ -27,18 +27,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $utilisateur = $model->verifierConnexion($email, $pass);
 
             // CONNEXION RÉUSSIE ! 
-            // Passage de l'id_user en GET (dans l'URL) car $_SESSION est interdit
-            if ($utilisateur['role'] === 'Admin') {
+            // On utilise des "->" car $utilisateur est maintenant un Objet PHP
+            if ($utilisateur->role === 'Admin') {
                 // Redirection vers le back-office si c'est l'admin
-                header("Location: ../admin/control/dashboard.php?id_user=" . $utilisateur['id_user']);
+                header("Location: ../admin/control/dashboard.php?id_user=" . $utilisateur->id_user);
                 exit();
             } else {
                 // Redirection vers le front-office si c'est un client
-                header("Location: ../index.php?id_user=" . $utilisateur['id_user']);
+                header("Location: ../index.php?id_user=" . $utilisateur->id_user);
                 exit();
             }
         } catch (UtilisateurException $e) {
-            // On attrape l'erreur si le mot de passe est faux ou si l'utilisateur n'existe pas
             $erreur = $e->getMessage();
         }
     } else {
