@@ -20,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pass = isset($_POST['pass']) ? htmlspecialchars($_POST['pass']) : '';
 
     if (!empty($email) && !empty($pass)) {
-        $model = new UtilisateursModel($racine);
+        $db = \model\Database::getConnexion();
+        $model = new UtilisateursModel($db);
         try {
             // On tente la connexion
             $utilisateur = $model->verifierConnexion($email, $pass);

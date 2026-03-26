@@ -14,7 +14,7 @@ class Database
             $username = "postgres";
             $password = "postgresql"; // Mettez votre mot de passe
             $port = 5433;
-            $dbname = "coursL2"; // Vérifiez le nom de votre base de données
+            $dbname = "portofolioDB"; // Vérifiez le nom de votre base de données
 
             try {
                 self::$conn = new \PDO("pgsql:host=$servername;port=$port;dbname=$dbname", $username, $password);

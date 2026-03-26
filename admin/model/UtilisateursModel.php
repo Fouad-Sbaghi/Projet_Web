@@ -19,16 +19,13 @@ class UtilisateursModel
         $stmt->bindParam(':email', $email);
         $stmt->execute();
 
-        $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $user = $stmt->fetch(\PDO::FETCH_CLASS);
 
         // Si aucun utilisateur n'est trouvé
         if (!$user) {
             throw new UtilisateurException("Cet utilisateur n'existe pas.");
         }
 
-        // Vérification du mot de passe
-        // Idéalement utilisez password_verify($motDePasse, $user['mot_de_passe']) si vous l'avez haché.
-        // Sinon, comparaison classique pour l'instant :
         if ($motDePasse === $user['mot_de_passe'] || password_verify($motDePasse, $user['mot_de_passe'])) {
             return $user; // On retourne les infos de l'utilisateur
         } else {

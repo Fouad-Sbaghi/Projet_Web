@@ -14,8 +14,8 @@
             <tbody>
                 <?php foreach ($liste_faq as $f): ?>
                     <tr>
-                        <td><?php echo $f['question']; ?></td>
-                        <td><?php echo $f['reponse']; ?></td>
+                        <td><?php echo $f->question; ?></td>
+                        <td><?php echo $f->reponse; ?></td>
                         <td>
                             <button class="w3-button w3-blue w3-small">Modifier</button>
                             <button class="w3-button w3-red w3-small">Supprimer</button>
