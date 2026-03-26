@@ -1,24 +1,24 @@
 <?php
-// admin/model/Database.php
+// model/Database.php
 namespace model;
-
-// On inclut le fichier secret qui contient les mots de passe.
-// L'autoloader risque de s'emmêler les pinceaux avec __DIR__, donc on utilise un chemin relatif.
-require_once __DIR__ . '/../../config.php'; 
 
 class Database
 {
     private static $conn = null;
 
+    // Méthode pour obtenir la connexion (Design Pattern Singleton)
     public static function getConnexion()
     {
         if (self::$conn === null) {
+            $servername = "localhost";
+            $username = "uapv2501850";
+            $password = "MsM7du";
+            $port = 5432;
+            $dbname = "etd";
+
             try {
-                self::$conn = new \PDO(
-                    "pgsql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME, 
-                    DB_USER, 
-                    DB_PASS
-                );
+                self::$conn = new \PDO("pgsql:host=$servername;port=$port;dbname=$dbname", $username, $password);
+                // Activer les exceptions PDO pour voir les erreurs SQL
                 self::$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             } catch (\PDOException $e) {
                 die('Erreur de connexion PDO : ' . $e->getMessage());
@@ -27,4 +27,3 @@ class Database
         return self::$conn;
     }
 }
-?>
