@@ -1,13 +1,16 @@
 <?php
+namespace classes;
 
-class Utilisateur {
-    public $id;
-    public $nom;
-    public $prenom;
-    public $email;
-    public $motDePasse;
+use interfaces\UtilisateurInterface;
 
-    public function __construct($id, $nom, $prenom, $email, $motDePasse){
+abstract class Utilisateur implements UtilisateurInterface {
+    protected $id;
+    protected $nom;
+    protected $prenom;
+    protected $email;
+    protected $motDePasse;
+
+    public function __construct($id="", $nom="", $prenom="", $email="", $motDePasse="") {
         $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
@@ -15,11 +18,22 @@ class Utilisateur {
         $this->motDePasse = $motDePasse;
     }
 
-    public function __get($id){
-       return $this->$id;
-    }   
+    public function __get($propriete) {
+        if (property_exists($this, $propriete)) {
+            return $this->$propriete;
+        }
+    }
 
+    public function __set($propriete, $valeur) {
+        if (property_exists($this, $propriete)) {
+            $this->$propriete = $valeur;
+        }
+    }
+
+    public function seConnecter() {
+    }
+
+    public function seDeconnecter() {
+    }
 }
-
-
 ?>
