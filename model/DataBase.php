@@ -7,7 +7,7 @@ $password = "postgresql";
 $port = 5433;
 
 try{
-	$conn = new PDO("pgsql:host=$servername;port=$port;dbname=coursL2", $username, $password);
+	$conn = new PDO("pgsql:host=$servername;port=$port;dbname=portofolioDB", $username, $password);
 	echo "connecté";
 }catch(PDOException $e){
 	echo 'PDOException : '.$e->getMessage();
@@ -15,7 +15,7 @@ try{
 
 // Préparer la requete preare(request)
 
-$sql = "CREATE TABLE IF NOT EXISTS site.\"Personne3\"(
+$sql = "CREATE TABLE IF NOT EXISTS site.\"UTILISATEURS\"(
     nom character varying(100),
     prenom character varying(100)
 );";
