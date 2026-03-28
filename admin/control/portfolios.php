@@ -17,7 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $description = htmlspecialchars($_POST['description']);
     $image = htmlspecialchars($_POST['image']);     
 
-    $id_user = isset($_GET['id_user']) ? intval($_GET['id_user']) : 0; 
+    $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+    var_dump($id); // ← affiche l'ID reçu
+    $cv = $projetModel->getProjetById($id);
+    var_dump($cv); // ← affiche ce que la BD retourne
 
     // On vérifie que le titre, la description ET un id_user valide existent
     if (!empty($titre) && !empty($description) && $id_user > 0) {
@@ -47,9 +50,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id
         $message = "<div class='w3-panel w3-red'>Erreur lors de la suppression.</div>";
     }
 }
-
-// 2. ON RÉCUPÈRE LA LISTE DES PROJETS...
-// ...
 
 // 2. ON RÉCUPÈRE LA LISTE DES PROJETS POUR LE TABLEAU
 $liste_portfolios = $projetModel->getAllProjets();

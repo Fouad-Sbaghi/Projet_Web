@@ -18,7 +18,7 @@ class ProjetModel {
         $stmt = $this->connexion->query($sql);
         
         // On demande à PDO de créer des objets "Projet"
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'classes\Projet');
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classes\Projet');
         
         return $stmt->fetchAll(); // Retourne un tableau d'objets Projet
     }

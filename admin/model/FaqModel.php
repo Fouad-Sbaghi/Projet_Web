@@ -18,7 +18,7 @@ class FaqModel {
         $stmt = $this->connexion->query($sql);
         
         // C'est ICI la magie : PDO va transformer chaque ligne SQL en un objet de votre classe Faq !
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'classes\Faq');
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classes\Faq');
         
         return $stmt->fetchAll(); // Retourne un tableau d'objets Faq
     }
