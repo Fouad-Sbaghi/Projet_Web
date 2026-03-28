@@ -58,13 +58,16 @@ class ProjetModel {
     }
 
     public function getProjetById($id) {
-        $sql = "SELECT id_projet AS id, titre, description, image_url AS image FROM PROJETS WHERE id_projet = :id";
-        $stmt = $this->connexion->prepare($sql);
-        $stmt->bindValue(':id', $id);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'classes\Projet');
-        return $stmt->fetch();
-    }
+    $sql = "SELECT p.id_projet AS id, p.titre, p.description, p.image_url AS image,
+                   u.lien_linkedin, u.nom, u.prenom
+            FROM PROJETS p
+            JOIN UTILISATEURS u ON p.id_user = u.id_user
+            WHERE p.id_projet = :id";
+    $stmt = $this->connexion->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 
     
 
