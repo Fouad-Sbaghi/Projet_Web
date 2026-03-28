@@ -15,6 +15,8 @@ try {
     // On récupère la connexion à votre base de données
     $db = Database::getConnexion();
 
+    
+
     $hash = password_hash('1234', PASSWORD_DEFAULT);
     $sql = "INSERT INTO UTILISATEURS (nom, prenom, email, mot_de_passe, role) 
         VALUES ('Super', 'Admin', 'admin@test.fr', '$hash', 'Admin')";

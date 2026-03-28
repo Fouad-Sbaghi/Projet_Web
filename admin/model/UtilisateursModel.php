@@ -18,7 +18,7 @@ class UtilisateursModel
     // Méthode pour vérifier la connexion
     public function verifierConnexion($email, $pass) {
         
-        $sql = "SELECT id_user AS id, nom, prenom, email, mot_de_passe AS motDePasse, role, filiere, lien_linkedin, telephone_pro FROM UTILISATEURS WHERE email = :email";
+        $sql = "SELECT id_user AS id, nom, prenom, email, mot_de_passe AS motdepasse, role, filiere, lien_linkedin, telephone_pro FROM UTILISATEURS WHERE email = :email";
         $stmt = $this->connexion->prepare($sql);
         $stmt->bindValue(':email', $email);
         $stmt->execute();
@@ -28,12 +28,12 @@ class UtilisateursModel
 
 
         if ($data) {
-            if (password_verify($pass, $data['motDePasse'])){ 
+            if (password_verify($pass, $data['motdepasse'])){ 
                 
                 if ($data['role'] === 'Admin') {
-                    return new \classes\Administrateur($data['id'], $data['nom'], $data['prenom'], $data['email'], $data['motDePasse'], $data['telephone_pro']);
+                    return new \classes\Administrateur($data['id'], $data['nom'], $data['prenom'], $data['email'], $data['motdepasse'], $data['telephone_pro']);
                 } else {
-                    return new \classes\Etudiant($data['id'], $data['nom'], $data['prenom'], $data['email'], $data['motDePasse'], $data['filiere'], $data['lien_linkedin']);
+                    return new \classes\Etudiant($data['id'], $data['nom'], $data['prenom'], $data['email'], $data['motdepasse'], $data['filiere'], $data['lien_linkedin']);
                 }
 
             } else {
