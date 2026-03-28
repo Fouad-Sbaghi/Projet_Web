@@ -5,7 +5,9 @@
 
     <div class="w3-panel w3-light-grey w3-padding-16">
         <h4>Ajouter un nouveau projet</h4>
-        <form method="POST" action="portfolios.php">
+        
+        <form method="POST" action="portfolios.php?id_user=<?= isset($_GET['id_user']) ? htmlspecialchars($_GET['id_user']) : '' ?>">
+            
             <input type="hidden" name="action" value="ajouter">
             
             <label>Titre du projet</label>
@@ -42,7 +44,12 @@
                             <td><?php echo htmlspecialchars($p->image); ?></td>
                             <td>
                                 <button class="w3-button w3-blue w3-small">Modifier</button>
-                                <button class="w3-button w3-red w3-small">Supprimer</button>
+                              
+                                <a href="portfolios.php?id_user=<?= isset($_GET['id_user']) ? htmlspecialchars($_GET['id_user']) : '' ?>&action=supprimer&id_projet=<?= $p->id ?>" 
+                                   onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce projet ?');" 
+                                   class="w3-button w3-red w3-small">
+                                   Supprimer
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -53,3 +60,4 @@
         </table>
     </div>
 </div>
+

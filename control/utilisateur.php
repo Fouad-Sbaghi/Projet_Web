@@ -1,57 +1,44 @@
 <?php
 // control/utilisateur.php
-
 $racine = "../";
 
-// 1. Appel de l'Autoloader au tout début !
+// 1. On charge l'Autoloader (Vérifiez que votre dossier s'appelle bien 'classes' avec un 's')
 require_once '../admin/classes/Autoloader.php';
 Autoloader::enregistrer();
 
-// 2. On indique qu'on va utiliser ces classes
+use model\Database;
 use model\UtilisateursModel;
-use model\UtilisateurException;
+use admin\model\UtilisateurException; // Si vous avez mis votre exception ici
 
 $erreur = "";
 
-// 3. Traitement du formulaire si la méthode est POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // On récupère les champs du form (dans view/login.php, les name sont "user" et "pass")
-    $email = isset($_POST['user']) ? htmlspecialchars($_POST['user']) : '';
-    $pass = isset($_POST['pass']) ? htmlspecialchars($_POST['pass']) : '';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = htmlspecialchars($_POST['email']);
+    $pass = htmlspecialchars($_POST['mot_de_passe']);
 
-    if (!empty($email) && !empty($pass)) {
-        $db = \model\Database::getConnexion();
+    try {
+        // 2. Connexion PDO
+        $db = Database::getConnexion();
         $model = new UtilisateursModel($db);
-        try {
-            // On tente la connexion
-            $utilisateur = $model->verifierConnexion($email, $pass);
 
-            // CONNEXION RÉUSSIE ! 
-            // On utilise des "->" car $utilisateur est maintenant un Objet PHP
-            if ($utilisateur->role === 'Admin') {
-                // Redirection vers le back-office si c'est l'admin
-                header("Location: ../admin/control/dashboard.php?id_user=" . $utilisateur->id_user);
-                exit();
-            } else {
-                // Redirection vers le front-office si c'est un client
-                header("Location: ../index.php?id_user=" . $utilisateur->id_user);
-                exit();
-            }
-        } catch (UtilisateurException $e) {
-            $erreur = $e->getMessage();
+        // 3. Vérification
+        $utilisateur = $model->verifierConnexion($email, $pass);
+
+        // 4. Redirection stricte avec l'ID dans l'URL
+        if ($utilisateur->role === 'Admin') {
+            header("Location: ../admin/control/dashboard.php?id_user=" . $utilisateur->id_user);
+            exit();
+        } else {
+            header("Location: ../index.php?id_user=" . $utilisateur->id_user);
+            exit();
         }
-    } else {
-        $erreur = "Veuillez remplir tous les champs.";
+    } catch (Exception $e) {
+        $erreur = "Identifiants incorrects ou erreur de base de données.";
     }
 }
 
-// 4. Affichage de la page
+// 5. Affichage de la vue
 include '../view/header.php';
-
-// S'il y a une erreur, on l'affiche au-dessus du formulaire
-if (!empty($erreur)) {
-    echo "<div class='w3-panel w3-red w3-center w3-padding'><h3>Erreur</h3><p>{$erreur}</p></div>";
-}
-
 include '../view/login.php';
 include '../view/footer.php';
+?>

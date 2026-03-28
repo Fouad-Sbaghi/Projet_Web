@@ -1,24 +1,16 @@
 <?php
-
 $racine = "../";
+require_once '../admin/classes/Autoloader.php';
+Autoloader::enregistrer();
 
-// fichier Data
-include "../model/data.php";
+use model\ProjetModel;
 
-// Récupérer l'id depuis l'URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Chercher le CV correspondant
-$cv = null;
-foreach ($cvs as $item) {
-    if ($item['id'] === $id) {
-        $cv = $item;
-        break;
-    }
-}
+$projetModel = new ProjetModel();
+$cv = $projetModel->getProjetById($id);
 
+// Pense à adapter ta vue view/portfolio.php pour utiliser les propriétés de l'objet ($cv->titre, $cv->image, etc.) au lieu de $cv['nom']
 include "../view/header.php";
-
 include "../view/portfolio.php";
-
 include "../view/footer.php";

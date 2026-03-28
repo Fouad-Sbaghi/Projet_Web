@@ -25,18 +25,41 @@ class ProjetModel {
 
     
     public function inserer(\classes\Projet $projet, $id_user) {
-        $sql = "INSERT INTO PROJETS (id_user, titre, description, image_url) 
-                VALUES (:id_user, :titre, :description, :image_url)";
-        
+    try {
+        $this->connexion->beginTransaction(); // Début de la transaction
+
+        $sql = "INSERT INTO PROJETS (id_user, titre, description, image_url) VALUES (:id_user, :titre, :description, :image_url)";
         $stmt = $this->connexion->prepare($sql);
-        
-        // On lie les attributs de l'objet Projet à la requête SQL
-        $stmt->bindValue(':id_user', $id_user);
-        $stmt->bindValue(':titre', $projet->titre);
-        $stmt->bindValue(':description', $projet->description);
-        $stmt->bindValue(':image_url', $projet->image);
+        // ... tes bindValues ...
+        $stmt->execute();
+
+        $this->connexion->commit(); // Validation
+        return true;
+    } catch (\Exception $e) {
+        $this->connexion->rollBack(); // Annulation en cas de crash
+        return false;
+    }
+}
+
+
+    /**
+     * Supprime un projet de la base de données via son ID
+     */
+    public function supprimer($id_projet) {
+        $sql = "DELETE FROM PROJETS WHERE id_projet = :id";
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindValue(':id', $id_projet);
         
         return $stmt->execute();
     }
+
+    public function getProjetById($id) {
+    $sql = "SELECT id_projet AS id, titre, description, image_url AS image FROM PROJETS WHERE id_projet = :id";
+    $stmt = $this->connexion->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_CLASS, 'classes\Projet');
+    return $stmt->fetch();
+}
 }
 ?>

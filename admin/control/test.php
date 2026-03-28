@@ -17,4 +17,6 @@ $utilisateursManager = new UtilisateursModel($db);
 
 // 4. On demande au modèle d'insérer notre objet étudiant !
 $utilisateursManager->inserer($nouvelEtudiant);
+
+
 ?>

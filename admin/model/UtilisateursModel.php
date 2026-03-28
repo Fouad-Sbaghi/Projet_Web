@@ -8,30 +8,32 @@ use model\UtilisateurException;
 class UtilisateursModel
 {
 
-    // Méthode pour vérifier la connexion
     public function verifierConnexion($email, $pass) {
-        // ... (votre code d'avant)
-        $sql = "SELECT * FROM UTILISATEURS WHERE email = :email";
-        $stmt = $this->connexion->prepare($sql);
-        $stmt->bindValue(':email', $email);
-        $stmt->execute();
-        
-        // --- LA MODIFICATION EST ICI ---
-        // On demande à PDO de nous renvoyer un objet 'Utilisateur'
-        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'classes\Utilisateur');
-        $utilisateur = $stmt->fetch();
+    // On utilise les alias AS pour faire correspondre SQL et les attributs de ta classe
+    $sql = "SELECT id_user AS id, nom, prenom, email, mot_de_passe AS motDePasse, role, filiere, lien_linkedin, telephone_pro FROM UTILISATEURS WHERE email = :email";
+    $stmt = $this->connexion->prepare($sql);
+    $stmt->bindValue(':email', $email);
+    $stmt->execute();
+    
+    // On récupère en tableau associatif classique
+    $data = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        // Si l'utilisateur existe
-        if ($utilisateur) {
-            // (La vérification du mot de passe dépend de si vous l'avez hashé ou non en BDD)
-            // Si c'est en clair pour l'instant (à changer plus tard pour la sécurité) :
-            if ($pass === $utilisateur->mot_de_passe) { 
-                return $utilisateur; // On retourne l'OBJET
+    if ($data) {
+        // Le cahier des charges exige un vrai système de vérification [cite: 97]
+        if (password_verify($pass, $data['motDePasse'])) { 
+            
+            // Instanciation de la bonne classe selon le rôle
+            if ($data['role'] === 'Admin') {
+                return new \classes\Administrateur($data['id'], $data['nom'], $data['prenom'], $data['email'], $data['motDePasse'], $data['telephone_pro']);
             } else {
-                throw new UtilisateurException("Mot de passe incorrect.");
+                return new \classes\Etudiant($data['id'], $data['nom'], $data['prenom'], $data['email'], $data['motDePasse'], $data['filiere'], $data['lien_linkedin']);
             }
+
         } else {
-            throw new UtilisateurException("Utilisateur non trouvé.");
+            throw new UtilisateurException("Mot de passe incorrect.");
         }
+    } else {
+        throw new UtilisateurException("Utilisateur non trouvé.");
+    }
     }
 }
