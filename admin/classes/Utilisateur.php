@@ -9,13 +9,15 @@ abstract class Utilisateur implements UtilisateurInterface {
     protected $prenom;
     protected $email;
     protected $motDePasse;
+    protected $role;
 
-    public function __construct($id="", $nom="", $prenom="", $email="", $motDePasse="") {
+    public function __construct($id="", $nom="", $prenom="", $email="", $motDePasse="", $role="") {
         $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->email = $email;
         $this->motDePasse = $motDePasse;
+        $this->role = $role;
     }
 
     public function __get($propriete) {

@@ -11,7 +11,7 @@ class Etudiant extends Utilisateur implements EtudiantInterface
 
     public function __construct($id, $nom, $prenom, $email, $motDePasse, $filiere, $lienLinkedin)
     {
-        parent::__construct($id, $nom, $prenom, $email, $motDePasse);
+        parent::__construct($id, $nom, $prenom, $email, $motDePasse, 'Etudiant');
         $this->filiere = $filiere;
         $this->lienLinkedin = $lienLinkedin;
     }

@@ -10,7 +10,7 @@ class Administrateur extends Utilisateur implements AdministrateurInterface {
 
 
     public function __construct($id="", $nom = "", $prenom = "", $email = "", $motDePasse = "", $telephonePro = "") {
-        parent::__construct($id, $nom, $prenom, $email, $motDePasse); 
+        parent::__construct($id, $nom, $prenom, $email, $motDePasse, 'Admin'); 
         $this->telephonePro = $telephonePro;
     }
 
