@@ -15,9 +15,9 @@ try {
     // On récupère la connexion à votre base de données
     $db = Database::getConnexion();
 
-    // La requête SQL pour créer l'admin
+    $hash = password_hash('1234', PASSWORD_DEFAULT);
     $sql = "INSERT INTO UTILISATEURS (nom, prenom, email, mot_de_passe, role) 
-            VALUES ('Super', 'Admin', 'admin@test.fr', '1234', 'Admin')";
+        VALUES ('Super', 'Admin', 'admin@test.fr', '$hash', 'Admin')";
 
     // On exécute la requête
     $db->exec($sql);
