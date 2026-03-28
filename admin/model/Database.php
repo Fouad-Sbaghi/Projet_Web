@@ -6,7 +6,6 @@ class Database
 {
     private static $conn = null;
 
-    // Méthode pour obtenir la connexion (Design Pattern Singleton)
     public static function getConnexion()
     {
         if (self::$conn === null) {
