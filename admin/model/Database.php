@@ -2,16 +2,24 @@
 // model/Database.php
 namespace model;
 
+/**
+ * Classe Database 
+ * Permet d'établir la connexion et la déconnexion à la BD
+ * Singleton : une seule connexion partagée
+ */
 class Database
 {
     private static $conn = null;
 
+    /**
+     * Retourne la connexion PDO (singleton)
+     */
     public static function getConnexion()
     {
         if (self::$conn === null) {
             $servername = "localhost";
-            $username = "uapv2501850";
-            $password = "MsM7du";
+            $username = "uapv2501475";
+            $password = "Fouad84.";
             $port = 5432;
             $dbname = "etd";
 
@@ -24,5 +32,13 @@ class Database
             }
         }
         return self::$conn;
+    }
+
+    /**
+     * Déconnexion de la BD
+     */
+    public static function deconnexion()
+    {
+        self::$conn = null;
     }
 }

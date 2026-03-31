@@ -1,60 +1,92 @@
 <?php
+// admin/control/portfolios.php
 $racine = "../../";
 
 require_once '../classes/Autoloader.php';
 Autoloader::enregistrer();
 
-use model\Database;
 use model\ProjetModel;
+use model\ProjetException;
+use model\UtilisateursModel;
 use classes\Projet;
 
+// Vérification de la connexion via GET
+if (!isset($_GET['id_user']) || empty($_GET['id_user'])) {
+    header("Location: ../index.php");
+    exit();
+}
+$id_user = intval($_GET['id_user']);
+
 $projetModel = new ProjetModel();
+$modelUser = new UtilisateursModel();
 $message = "";
 
+// Récupérer la liste des étudiants pour le formulaire d'ajout
+$liste_etudiants = $modelUser->getAllUtilisateurs();
 
+// AJOUT d'un projet (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'ajouter') {
     $titre = htmlspecialchars($_POST['titre']);
     $description = htmlspecialchars($_POST['description']);
     $image = htmlspecialchars($_POST['image']);     
 
-    $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-    var_dump($id); // ← affiche l'ID reçu
-    $cv = $projetModel->getProjetById($id);
-    var_dump($cv); // ← affiche ce que la BD retourne
+    $id_etudiant = intval($_POST['id_etudiant'] ?? $id_user);
 
-    // On vérifie que le titre, la description ET un id_user valide existent
-    if (!empty($titre) && !empty($description) && $id_user > 0) {
-        
-        $nouveauProjet = new Projet("", $titre, $description, $image);
-        
-        // On insère avec le VRAI id_user de la personne connectée
-        if ($projetModel->inserer($nouveauProjet, $id_user)) {
-            $message = "<div class='w3-panel w3-green'>Projet ajouté avec succès !</div>";
-        } else {
-            $message = "<div class='w3-panel w3-red'>Erreur lors de l'ajout.</div>";
+    if (!empty($titre) && !empty($description) && $id_etudiant > 0) {
+        try {
+            $nouveauProjet = new Projet("", $titre, $description, $image);
+            $projetModel->inserer($nouveauProjet, $id_etudiant);
+            $message = "<div class='w3-panel w3-green'><p>Projet ajouté avec succès !</p></div>";
+        } catch (ProjetException $e) {
+            $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
         }
     } else {
-        $message = "<div class='w3-panel w3-orange'>Erreur : Informations manquantes ou vous n'êtes pas connecté avec un ID valide.</div>";
+        $message = "<div class='w3-panel w3-orange'><p>Erreur : Informations manquantes.</p></div>";
     }
 }
 
+// MODIFICATION d'un projet (POST)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'modifier') {
+    $id_projet = intval($_POST['id_projet']);
+    $titre = htmlspecialchars($_POST['titre']);
+    $description = htmlspecialchars($_POST['description']);
+    $image = htmlspecialchars($_POST['image']);     
 
-// 1.5 SI ON DEMANDE UNE SUPPRESSION (via l'URL en GET)
+    try {
+        $projetModif = new Projet($id_projet, $titre, $description, $image);
+        $projetModel->modifierProjet($projetModif);
+        $message = "<div class='w3-panel w3-green'><p>Projet modifié avec succès !</p></div>";
+    } catch (ProjetException $e) {
+        $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
+    }
+}
+
+// SUPPRESSION d'un projet (GET)
 if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id_projet'])) {
     $id_projet_a_supprimer = intval($_GET['id_projet']);
     
-    // On appelle notre nouvelle méthode du modèle
-    if ($projetModel->supprimer($id_projet_a_supprimer)) {
-        $message = "<div class='w3-panel w3-green'>Projet supprimé avec succès !</div>";
-    } else {
-        $message = "<div class='w3-panel w3-red'>Erreur lors de la suppression.</div>";
+    try {
+        $projetModel->supprimer($id_projet_a_supprimer);
+        $message = "<div class='w3-panel w3-green'><p>Projet supprimé avec succès !</p></div>";
+    } catch (ProjetException $e) {
+        $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
     }
 }
 
-// 2. ON RÉCUPÈRE LA LISTE DES PROJETS POUR LE TABLEAU
+// Récupérer la liste des projets pour le tableau
 $liste_portfolios = $projetModel->getAllProjets();
 
-// 3. ON AFFICHE LA VUE
+// Récupérer le projet à modifier si demandé
+$projet_a_modifier = null;
+if (isset($_GET['action']) && $_GET['action'] === 'editer' && isset($_GET['id_projet'])) {
+    try {
+        $projet_a_modifier = $projetModel->getProjetById(intval($_GET['id_projet']));
+    } catch (ProjetException $e) {
+        $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
+    }
+}
+
+// Affichage des vues
 include "../view/header.php";
 include "../view/sidebar.php";
 include "../view/portfolios.php";

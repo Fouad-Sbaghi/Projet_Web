@@ -3,26 +3,55 @@ namespace classes;
 
 use interfaces\AdministrateurInterface;
 
-
+/**
+ * Classe Administrateur
+ * 
+ * Hérite de Utilisateur (extends)
+ * Implémente AdministrateurInterface
+ */
 class Administrateur extends Utilisateur implements AdministrateurInterface {
-    
-    protected $telephonePro;
+	
+	protected $telephonePro;
 
+	/**
+	 * Constructeur : appel du parent::__construct()
+	 */
+	public function __construct($id="", $nom = "", $prenom = "", $email = "", $motDePasse = "", $telephonePro = "") {
+		// Appel du constructeur de la classe mère
+		parent::__construct($id, $nom, $prenom, $email, $motDePasse, 'Admin'); 
+		$this->telephonePro = $telephonePro;
+	}
 
-    public function __construct($id="", $nom = "", $prenom = "", $email = "", $motDePasse = "", $telephonePro = "") {
-        parent::__construct($id, $nom, $prenom, $email, $motDePasse, 'Admin'); 
-        $this->telephonePro = $telephonePro;
-    }
+	////////// Methodes magiques ///////////
 
-    public function gererUtilisateurs() {
+	/**
+	 * __toString spécialisé
+	 */
+	function __toString(){
+		return "$this->nom/$this->prenom (Admin)";
+	}
 
-    }
+	/**
+	 * __debugInfo spécialisé
+	 * appel de __debugInfo de la classe mère + ajout des clés spécifiques
+	 */
+	function __debugInfo(){
+		// appel de __debugInfo de la classe mère
+		$debug = parent::__debugInfo();
+		// ajout de clés dans l'Array
+		$debug["tel"] = $this->telephonePro;
+		// renvoie de l'Array
+		return $debug;
+	}
 
-    public function envoyerMail() {
+	// Méthodes de l'interface AdministrateurInterface
+	public function gererUtilisateurs() {
+	}
 
-    }
+	public function envoyerMail() {
+	}
 
-    public function supprimerCompte() {
-    }
+	public function supprimerCompte() {
+	}
 }
 ?>

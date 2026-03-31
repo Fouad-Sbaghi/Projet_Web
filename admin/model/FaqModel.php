@@ -2,25 +2,120 @@
 namespace model;
 
 use PDO;
-use classes\Faq; // On importe votre classe objet
+use classes\Faq;
+use model\FaqException;
 
+/**
+ * Classe FaqModel
+ * 
+ * Gère la récupération, modification et suppression des FAQ
+ * Namespace model, utilisation de PDO uniquement
+ */
 class FaqModel {
     private $connexion;
 
     public function __construct() {
-        // On utilise votre Database en mode Singleton
         $this->connexion = Database::getConnexion();
     }
 
-    // Méthode pour récupérer toutes les FAQ sous forme d'objets
+    /**
+     * Récupérer toutes les FAQ sous forme d'objets Faq
+     * @return array tableau d'objets Faq
+     */
     public function getAllFaqs() {
-        $sql = "SELECT * FROM FAQ";
+        $sql = "SELECT id_faq AS id, question, reponse FROM FAQ";
         $stmt = $this->connexion->query($sql);
-        
-        // C'est ICI la magie : PDO va transformer chaque ligne SQL en un objet de votre classe Faq !
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classes\Faq');
-        
-        return $stmt->fetchAll(); // Retourne un tableau d'objets Faq
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * Récupérer une FAQ par son ID
+     * @param int $id
+     * @return Faq objet
+     * @throws FaqException
+     */
+    public function getFaqById($id) {
+        $sql = "SELECT id_faq AS id, question, reponse FROM FAQ WHERE id_faq = :id";
+        $stmt = $this->connexion->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classes\Faq');
+        $stmt->execute();
+        $faq = $stmt->fetch();
+
+        if (!$faq) {
+            throw new FaqException("FAQ non trouvée.", 404);
+        }
+        return $faq;
+    }
+
+    /**
+     * Insérer une nouvelle FAQ (avec transaction)
+     * @param Faq $faq
+     * @return bool
+     */
+    public function insererFaq(\classes\Faq $faq) {
+        try {
+            $this->connexion->beginTransaction();
+
+            $sql = "INSERT INTO FAQ (question, reponse) VALUES (:question, :reponse)";
+            $stmt = $this->connexion->prepare($sql);
+            $stmt->bindValue(':question', $faq->question);
+            $stmt->bindValue(':reponse', $faq->reponse);
+            $stmt->execute();
+
+            $this->connexion->commit();
+            return true;
+        } catch (\Exception $e) {
+            $this->connexion->rollBack();
+            throw new FaqException("Erreur : impossible d'ajouter la question. Vérifiez qu'elle ne soit pas trop longue.", 500);
+        }
+    }
+
+    /**
+     * Modifier une FAQ (avec transaction)
+     * @param Faq $faq
+     * @return bool
+     */
+    public function modifierFaq(\classes\Faq $faq) {
+        try {
+            $this->connexion->beginTransaction();
+
+            $sql = "UPDATE FAQ SET question = :question, reponse = :reponse WHERE id_faq = :id";
+            $stmt = $this->connexion->prepare($sql);
+            $stmt->bindValue(':question', $faq->question);
+            $stmt->bindValue(':reponse', $faq->reponse);
+            $stmt->bindValue(':id', $faq->id);
+            $stmt->execute();
+
+            $this->connexion->commit();
+            return true;
+        } catch (\Exception $e) {
+            $this->connexion->rollBack();
+            throw new FaqException("Erreur : impossible de modifier cette question. Vérifiez les informations saisies.", 500);
+        }
+    }
+
+    /**
+     * Supprimer une FAQ
+     * @param int $id
+     * @return bool
+     */
+    public function supprimerFaq($id) {
+        try {
+            $this->connexion->beginTransaction();
+
+            $sql = "DELETE FROM FAQ WHERE id_faq = :id";
+            $stmt = $this->connexion->prepare($sql);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+
+            $this->connexion->commit();
+            return true;
+        } catch (\Exception $e) {
+            $this->connexion->rollBack();
+            throw new FaqException("Erreur : impossible de supprimer cette question de la FAQ.", 500);
+        }
     }
 }
 ?>

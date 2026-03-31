@@ -1,51 +1,95 @@
 <?php
-
 namespace classes;
 
 use interfaces\FaqInterface;
 
+/**
+ * Classe Faq
+ * 
+ * Implémente FaqInterface
+ */
 class Faq implements FaqInterface {
 
-    protected $id;
-    protected $question;
-    protected $reponse;
+	protected $id;
+	protected $question;
+	protected $reponse;
 
-    public function __construct($id = "", $question = "", $reponse = "") {
-        $this->id = $id;
-        $this->question = $question;
-        $this->reponse = $reponse;
-    }
+	/**
+	 * Constructeur
+	 */
+	public function __construct($id = "", $question = "", $reponse = "") {
+		$this->id = $id;
+		$this->question = $question;
+		$this->reponse = $reponse;
+	}
 
-    public function ajouterQuestion($question, $reponse){
-        $this->question = $question;
-        $this->reponse = $reponse;
-    }
+	////////// Methodes magiques ///////////
 
+	/**
+	 * __toString
+	 */
+	function __toString(){
+		return "FAQ : $this->question";
+	}
 
-    public function __get($name) {
-        if(isset($this->$name)) {
-            return $this->$name;
-        } else {
-            echo "$name n'existe pas ou n'est pas initialisé.";
-        }
-    }
+	/**
+	 * __debugInfo
+	 */
+	function __debugInfo(){
+		return [
+			'id' => $this->id,
+			'question' => $this->question,
+			'reponse' => substr($this->reponse, 0, 50)
+		];
+	}
 
-    public function __set($name, $val) {
-        if(isset($this->$name)) {
-            $this->$name = $val;
-        } else {
-            echo "Impossible de modifier $name car il n'existe pas.";
-        }
-    }
+	/**
+	 * __destruct
+	 */
+	function __destruct(){
+		// echo "</br> Delete FAQ id=$this->id </br>";
+	}
 
-    public function modifier() {
-    }
+	/**
+	 * __isset
+	 * appelée si on teste l'existence ou la vacuité d'un attribut protégé avec isset() ou empty()
+	 */
+	function __isset($name) {
+		return property_exists($this, $name) && !empty($this->$name);
+	}
 
-    public function supprimer() {
-    }
+	/**
+	 * __get
+	 */
+	function __get($name) {
+		if(property_exists($this, $name)) {
+			return $this->$name;
+		} else {
+			echo "$name n'existe pas.";
+		}
+	}
+
+	/**
+	 * __set
+	 */
+	function __set($name, $val) {
+		if(property_exists($this, $name)) {
+			$this->$name = $val;
+		} else {
+			echo "Impossible de modifier $name car il n'existe pas.";
+		}
+	}
+
+	// Méthodes de l'interface
+	public function ajouterQuestion($question, $reponse){
+		$this->question = $question;
+		$this->reponse = $reponse;
+	}
+
+	public function modifier() {
+	}
+
+	public function supprimer() {
+	}
 }
-
-
-
-
 ?>

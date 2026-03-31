@@ -2,9 +2,9 @@
 namespace model;
 
 /**
- * Exception personnalisée pour les Utilisateurs
+ * Exception personnalisée pour les Projets
  */
-class UtilisateurException extends \Exception
+class ProjetException extends \Exception
 {
     function __construct($message, $code = 0){
         parent::__construct($message, $code);
