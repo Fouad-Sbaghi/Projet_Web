@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     try {
         $nouvelleFaq = new Faq("", $question, $reponse);
         $modele->insererFaq($nouvelleFaq);
-        $message = "<div class='w3-panel w3-green'><p>FAQ ajoutée avec succès !</p></div>";
+        $message = "<div class='w3-panel w3-green'><p>FAQ ajoutée</p></div>";
     } catch (FaqException $e) {
         $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
     }
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     try {
         $faqModif = new Faq($id_faq, $question, $reponse);
         $modele->modifierFaq($faqModif);
-        $message = "<div class='w3-panel w3-green'><p>FAQ modifiée avec succès !</p></div>";
+        $message = "<div class='w3-panel w3-green'><p>FAQ modifiée</p></div>";
     } catch (FaqException $e) {
         $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
     }
