@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         try {
             $nouveauProjet = new Projet("", $titre, $description, $image);
             $projetModel->inserer($nouveauProjet, $id_etudiant);
-            $message = "<div class='w3-panel w3-green'><p>Projet ajouté avec succès !</p></div>";
+            $message = "<div class='w3-panel w3-green'><p>Projet ajouté</p></div>";
         } catch (ProjetException $e) {
             $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
         }
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     try {
         $projetModif = new Projet($id_projet, $titre, $description, $image);
         $projetModel->modifierProjet($projetModif);
-        $message = "<div class='w3-panel w3-green'><p>Projet modifié avec succès !</p></div>";
+        $message = "<div class='w3-panel w3-green'><p>Projet modifié</p></div>";
     } catch (ProjetException $e) {
         $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
     }
@@ -67,7 +67,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id
     
     try {
         $projetModel->supprimer($id_projet_a_supprimer);
-        $message = "<div class='w3-panel w3-green'><p>Projet supprimé avec succès !</p></div>";
+        $message = "<div class='w3-panel w3-green'><p>Projet supprimé</p></div>";
     } catch (ProjetException $e) {
         $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
     }

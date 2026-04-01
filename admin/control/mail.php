@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($liste_users as $u) {
             @mail($u->email, $sujet, $contenu);
         }
-        $message = "<div class='w3-panel w3-green'><p>Mail envoyé aux utilisateurs !</p></div>";
+        $message = "<div class='w3-panel w3-green'><p>Mail envoyé</p></div>";
     } else {
         $message = "<div class='w3-panel w3-orange'><p>Veuillez remplir tous les champs.</p></div>";
     }

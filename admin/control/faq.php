@@ -52,7 +52,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id
     $id_faq_suppr = intval($_GET['id_faq']);
     try {
         $modele->supprimerFaq($id_faq_suppr);
-        $message = "<div class='w3-panel w3-green'><p>FAQ supprimée avec succès !</p></div>";
+        $message = "<div class='w3-panel w3-green'><p>FAQ supprimée</p></div>";
     } catch (FaqException $e) {
         $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
     }

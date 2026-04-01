@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             $newUser = new Etudiant("", $nom, $prenom, $email, $mdp, $filiere, $linkedin);
         }
         $model_user->insererUtilisateur($newUser);
-        $message = "<div class='w3-panel w3-green'><p>Utilisateur ajouté avec succès !</p></div>";
+        $message = "<div class='w3-panel w3-green'><p>Utilisateur ajouté</p></div>";
     } catch (UtilisateurException $e) {
         $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
     }
@@ -48,7 +48,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id
     $id_suppr = intval($_GET['id_suppr']);
     try {
         $model_user->supprimerUtilisateur($id_suppr);
-        $message = "<div class='w3-panel w3-green'><p>Utilisateur supprimé avec succès !</p></div>";
+        $message = "<div class='w3-panel w3-green'><p>Utilisateur supprimé</p></div>";
     } catch (UtilisateurException $e) {
         $message = "<div class='w3-panel w3-red'><p>" . $e->getMessage() . "</p></div>";
     }
