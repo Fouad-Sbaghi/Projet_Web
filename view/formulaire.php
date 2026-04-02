@@ -11,8 +11,6 @@
     <label class="w3-text-indigo" for="lname">Nom de famille :</label>
     <input class="w3-input w3-border w3-margin-bottom" type="text" id="lname" name="lname" required>
 
-    <label class="w3-text-indigo" for="mail">Mail :</label>
-    <input class="w3-input w3-border w3-margin-bottom" type="email" id="mail" name="mail" required>
 
     <label class="w3-text-indigo" for="message">Message :</label>
     <textarea class="w3-input w3-border w3-margin-bottom" id="message" name="message" required></textarea>
