@@ -3,7 +3,7 @@ namespace model;
 
 use PDO;
 use classes\Faq;
-use model\FaqException;
+use model\exceptions\FaqException;
 
 class FaqModel {
     private $connexion;

@@ -4,7 +4,7 @@ require_once '../classes/Autoloader.php';
 Autoloader::enregistrer();
 
 use model\FaqModel;
-use model\FaqException;
+use model\exceptions\FaqException;
 use classes\Faq;
 
 if (!isset($_GET['id_user']) || empty($_GET['id_user'])) {
