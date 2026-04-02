@@ -24,10 +24,6 @@ abstract class Utilisateur implements UtilisateurInterface {
 		self::$nb_users += 1;
 	}
 
-	function __destruct(){
-
-	}
-
 	function __isset($name) {
 		return property_exists($this, $name) && !empty($this->$name);
 	}

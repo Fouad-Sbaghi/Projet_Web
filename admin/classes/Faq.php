@@ -22,11 +22,6 @@ class Faq implements FaqInterface
 		return "FAQ : $this->question";
 	}
 
-	function __destruct()
-	{
-
-	}
-
 	function __isset($name)
 	{
 		return property_exists($this, $name) && !empty($this->$name);
