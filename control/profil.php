@@ -1,5 +1,5 @@
 <?php
-// control/profil.php
+
 $racine = "../";
 require_once '../admin/classes/Autoloader.php';
 Autoloader::enregistrer();
@@ -14,7 +14,6 @@ $id = intval($_GET['id']);
 $model = new UtilisateursModel();
 $message = "";
 
-// SUPPRESSION du compte
 if (isset($_GET['action']) && $_GET['action'] === 'supprimer') {
     try {
         $model->supprimerUtilisateur($id);
@@ -25,7 +24,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'supprimer') {
     }
 }
 
-// MODIFICATION du profil
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'modifier') {
     try {
         $utilisateur = $model->getUtilisateurById($id);

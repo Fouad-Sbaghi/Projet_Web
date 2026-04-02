@@ -1,5 +1,4 @@
 <?php
-// admin/control/users.php
 
 require_once '../classes/Autoloader.php';
 Autoloader::enregistrer();
@@ -9,7 +8,6 @@ use model\UtilisateurException;
 use classes\Etudiant;
 use classes\Administrateur;
 
-// Vérification de la connexion via GET
 if (!isset($_GET['id_user']) || empty($_GET['id_user'])) {
     header("Location: ../index.php");
     exit();
@@ -19,7 +17,6 @@ $id_user = intval($_GET['id_user']);
 $model_user = new UtilisateursModel();
 $message = "";
 
-// AJOUT d'un utilisateur (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'ajouter') {
     $nom = htmlspecialchars($_POST['nom']);
     $prenom = htmlspecialchars($_POST['prenom']);
@@ -43,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 }
 
-// SUPPRESSION d'un utilisateur (GET)
 if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id_suppr'])) {
     $id_suppr = intval($_GET['id_suppr']);
     try {
@@ -54,7 +50,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id
     }
 }
 
-// Récupérer la liste
 $liste_users = $model_user->getAllUtilisateurs();
 
 include "../view/header.php";

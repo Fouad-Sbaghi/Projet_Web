@@ -1,6 +1,5 @@
 <?php 
 
-
 $racine = ""; 
 
 include 'view/header.php';

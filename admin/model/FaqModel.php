@@ -5,12 +5,6 @@ use PDO;
 use classes\Faq;
 use model\FaqException;
 
-/**
- * Classe FaqModel
- * 
- * Gère la récupération, modification et suppression des FAQ
- * Namespace model, utilisation de PDO uniquement
- */
 class FaqModel {
     private $connexion;
 
@@ -18,10 +12,6 @@ class FaqModel {
         $this->connexion = Database::getConnexion();
     }
 
-    /**
-     * Récupérer toutes les FAQ sous forme d'objets Faq
-     * @return array tableau d'objets Faq
-     */
     public function getAllFaqs() {
         $sql = "SELECT id_faq AS id, question, reponse FROM FAQ";
         $stmt = $this->connexion->query($sql);
@@ -29,12 +19,6 @@ class FaqModel {
         return $stmt->fetchAll();
     }
 
-    /**
-     * Récupérer une FAQ par son ID
-     * @param int $id
-     * @return Faq objet
-     * @throws FaqException
-     */
     public function getFaqById($id) {
         $sql = "SELECT id_faq AS id, question, reponse FROM FAQ WHERE id_faq = :id";
         $stmt = $this->connexion->prepare($sql);
@@ -49,11 +33,6 @@ class FaqModel {
         return $faq;
     }
 
-    /**
-     * Insérer une nouvelle FAQ (avec transaction)
-     * @param Faq $faq
-     * @return bool
-     */
     public function insererFaq(\classes\Faq $faq) {
         try {
             $this->connexion->beginTransaction();
@@ -72,11 +51,6 @@ class FaqModel {
         }
     }
 
-    /**
-     * Modifier une FAQ (avec transaction)
-     * @param Faq $faq
-     * @return bool
-     */
     public function modifierFaq(\classes\Faq $faq) {
         try {
             $this->connexion->beginTransaction();
@@ -96,11 +70,6 @@ class FaqModel {
         }
     }
 
-    /**
-     * Supprimer une FAQ
-     * @param int $id
-     * @return bool
-     */
     public function supprimerFaq($id) {
         try {
             $this->connexion->beginTransaction();

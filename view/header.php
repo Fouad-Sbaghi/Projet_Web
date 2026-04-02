@@ -10,7 +10,7 @@
 <body>
 
 <?php
-// Récupérer l'id de l'utilisateur connecté depuis l'URL
+
 $id_connecte = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $param_id = ($id_connecte > 0) ? "?id=" . $id_connecte : "";
 ?>

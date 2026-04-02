@@ -5,12 +5,6 @@ use PDO;
 use classes\Projet;
 use model\ProjetException;
 
-/**
- * Classe ProjetModel
- * 
- * Gère la récupération, modification et suppression des projets
- * Namespace model, utilisation de PDO uniquement
- */
 class ProjetModel {
     private $connexion;
 
@@ -18,21 +12,12 @@ class ProjetModel {
         $this->connexion = Database::getConnexion();
     }
 
-    /**
-     * Récupérer tous les projets
-     * @return array tableau d'objets Projet
-     */
     public function getAllProjets() {
         $sql = "SELECT id_projet AS id, titre, description, image_url AS image, id_user FROM PROJETS";
         $stmt = $this->connexion->query($sql);
         return $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classes\Projet');
     }
 
-    /**
-     * Récupérer un projet par son ID (avec infos utilisateur via JOIN)
-     * @param int $id
-     * @return Projet ou false
-     */
     public function getProjetById($id) {
         $sql = "SELECT p.id_projet AS id, p.titre, p.description, p.image_url AS image,
                        u.lien_linkedin, u.nom, u.prenom, p.id_user
@@ -51,12 +36,6 @@ class ProjetModel {
         return $projet;
     }
 
-    /**
-     * Insérer un nouveau projet (avec transaction)
-     * @param Projet $projet objet Projet
-     * @param int $id_user
-     * @return bool
-     */
     public function inserer(\classes\Projet $projet, $id_user) {
         try {
             $this->connexion->beginTransaction();
@@ -78,11 +57,6 @@ class ProjetModel {
         }
     }
 
-    /**
-     * Modifier un projet (avec transaction)
-     * @param Projet $projet objet Projet
-     * @return bool
-     */
     public function modifierProjet(\classes\Projet $projet) {
         try {
             $this->connexion->beginTransaction();
@@ -103,11 +77,6 @@ class ProjetModel {
         }
     }
 
-    /**
-     * Supprimer un projet
-     * @param int $id_projet
-     * @return bool
-     */
     public function supprimer($id_projet) {
         try {
             $this->connexion->beginTransaction();

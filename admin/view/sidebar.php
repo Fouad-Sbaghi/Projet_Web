@@ -1,5 +1,5 @@
 <?php 
-// On récupère l'ID actuel pour l'accrocher à tous les liens
+
 $id_user_actuel = isset($_GET['id_user']) ? htmlspecialchars($_GET['id_user']) : '';
 $url_param = !empty($id_user_actuel) ? "?id_user=" . $id_user_actuel : "";
 ?>

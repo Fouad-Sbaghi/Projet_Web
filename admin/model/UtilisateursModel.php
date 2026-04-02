@@ -5,12 +5,6 @@ use model\UtilisateurException;
 use model\Database;
 use PDO;
 
-/**
- * Classe UtilisateursModel
- * 
- * Gère la récupération, modification et suppression des utilisateurs
- * Namespace model, utilisation de PDO uniquement
- */
 class UtilisateursModel
 {
     private $connexion;
@@ -19,13 +13,6 @@ class UtilisateursModel
         $this->connexion = Database::getConnexion();
     }
 
-    /**
-     * Vérifier la connexion d'un utilisateur
-     * @param string $email
-     * @param string $pass mot de passe en clair
-     * @return \classes\Etudiant|\classes\Administrateur
-     * @throws UtilisateurException
-     */
     public function verifierConnexion($email, $pass) {
         
         $sql = "SELECT id_user AS id, nom, prenom, email, mot_de_passe AS motdepasse, role, filiere, lien_linkedin, telephone_pro FROM UTILISATEURS WHERE email = :email";
@@ -52,10 +39,6 @@ class UtilisateursModel
         }
     }
 
-    /**
-     * Récupérer tous les utilisateurs
-     * @return array tableau associatif
-     */
     public function getAllUtilisateurs(){
         $sql = "SELECT id_user AS id, nom, prenom, email, role FROM UTILISATEURS";
         $stmt = $this->connexion->query($sql);
@@ -71,12 +54,6 @@ class UtilisateursModel
         return $users;
     }
 
-    /**
-     * Récupérer un utilisateur par son ID
-     * @param int $id
-     * @return \classes\Etudiant|\classes\Administrateur
-     * @throws UtilisateurException
-     */
     public function getUtilisateurById($id){
         $sql = "SELECT id_user AS id, nom, prenom, email, mot_de_passe AS motdepasse, role, filiere, lien_linkedin, telephone_pro FROM UTILISATEURS WHERE id_user = :id";
         $stmt = $this->connexion->prepare($sql);
@@ -96,11 +73,6 @@ class UtilisateursModel
         }
     }
 
-    /**
-     * Insérer un nouvel utilisateur (avec transaction)
-     * @param \classes\Etudiant|\classes\Administrateur $user
-     * @return bool
-     */
     public function insererUtilisateur($user){
         try {
             $this->connexion->beginTransaction();
@@ -111,7 +83,7 @@ class UtilisateursModel
             $stmt->bindValue(':nom', $user->nom);
             $stmt->bindValue(':prenom', $user->prenom);
             $stmt->bindValue(':email', $user->email);
-            // Hashage du mot de passe pour la sécurité
+
             $stmt->bindValue(':mdp', password_hash($user->motDePasse, PASSWORD_DEFAULT));
             $stmt->bindValue(':role', $user->role);
             $stmt->bindValue(':filiere', $user->filiere ?? '');
@@ -127,11 +99,6 @@ class UtilisateursModel
         }
     }
 
-    /**
-     * Modifier un utilisateur (avec transaction)
-     * @param \classes\Etudiant|\classes\Administrateur $user
-     * @return bool
-     */
     public function modifierUtilisateur($user){
         try {
             $this->connexion->beginTransaction();
@@ -156,22 +123,15 @@ class UtilisateursModel
         }
     }
 
-    /**
-     * Supprimer un utilisateur
-     * @param int $id
-     * @return bool
-     */
     public function supprimerUtilisateur($id){
         try {
             $this->connexion->beginTransaction();
 
-            // Supprimer d'abord les projets liés (contrainte FK)
             $sql = "DELETE FROM PROJETS WHERE id_user = :id";
             $stmt = $this->connexion->prepare($sql);
             $stmt->bindValue(':id', $id);
             $stmt->execute();
 
-            // Puis supprimer l'utilisateur
             $sql = "DELETE FROM UTILISATEURS WHERE id_user = :id";
             $stmt = $this->connexion->prepare($sql);
             $stmt->bindValue(':id', $id);

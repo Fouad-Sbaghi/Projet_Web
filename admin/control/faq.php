@@ -1,5 +1,4 @@
 <?php
-// admin/control/faq.php
 
 require_once '../classes/Autoloader.php';
 Autoloader::enregistrer();
@@ -8,7 +7,6 @@ use model\FaqModel;
 use model\FaqException;
 use classes\Faq;
 
-// Vérification de la connexion via GET
 if (!isset($_GET['id_user']) || empty($_GET['id_user'])) {
     header("Location: ../index.php");
     exit();
@@ -18,7 +16,6 @@ $id_user = intval($_GET['id_user']);
 $modele = new FaqModel();
 $message = "";
 
-// AJOUT d'une FAQ (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'ajouter') {
     $question = htmlspecialchars($_POST['question']);
     $reponse = htmlspecialchars($_POST['reponse']);
@@ -32,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 }
 
-// MODIFICATION d'une FAQ (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'modifier') {
     $id_faq = intval($_POST['id_faq']);
     $question = htmlspecialchars($_POST['question']);
@@ -47,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 }
 
-// SUPPRESSION d'une FAQ (GET)
 if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id_faq'])) {
     $id_faq_suppr = intval($_GET['id_faq']);
     try {
@@ -58,10 +53,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'supprimer' && isset($_GET['id
     }
 }
 
-// Récupérer toutes les FAQ
 $liste_faq = $modele->getAllFaqs();
 
-// Récupérer la FAQ à modifier si demandé
 $faq_a_modifier = null;
 if (isset($_GET['action']) && $_GET['action'] === 'editer' && isset($_GET['id_faq'])) {
     try {

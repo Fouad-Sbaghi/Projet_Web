@@ -1,10 +1,9 @@
 <?php
-// control/contact.php
+
 $racine = "../";
 
 $message_contact = "";
 
-// Traitement du formulaire de contact (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prenom = htmlspecialchars($_POST['fname'] ?? '');
     $nom = htmlspecialchars($_POST['lname'] ?? '');
@@ -12,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contenu = htmlspecialchars($_POST['message'] ?? '');
 
     if (!empty($prenom) && !empty($nom) && !empty($mail) && !empty($contenu)) {
-        // Envoi du mail de contact
+
         $sujet = "Contact de $prenom $nom";
         $body = "De : $prenom $nom ($mail)\n\nMessage :\n$contenu";
         @mail("fouad.sbaghi7@gmail.com", $sujet, $body, "From: $mail");
