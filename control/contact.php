@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sujet = "Contact de $prenom $nom";
         $body = "De : $prenom $nom ($mail)\n\nMessage :\n$contenu";
         @mail("fouad.sbaghi7@gmail.com", $sujet, $body, "From: $mail");
-        $message_contact = "<div class='w3-panel w3-green w3-center'><p>Votre message a été envoyé !</p></div>";
+        $message_contact = "<div class='w3-panel w3-green w3-center'><p>Votre message a été</p></div>";
     } else {
         $message_contact = "<div class='w3-panel w3-orange w3-center'><p>Veuillez remplir tous les champs.</p></div>";
     }
