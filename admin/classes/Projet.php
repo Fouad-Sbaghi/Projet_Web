@@ -23,19 +23,6 @@ class Projet implements ProjetInterface {
 		return "Projet : $this->titre (id=$this->id)";
 	}
 
-	function __debugInfo(){
-		return [
-			'id' => $this->id,
-			'titre' => $this->titre,
-			'description' => substr($this->description, 0, 50).'...',
-			'image' => $this->image
-		];
-	}
-
-	function __destruct(){
-
-	}
-
 	function __isset($name) {
 		return property_exists($this, $name) && !empty($this->$name);
 	}

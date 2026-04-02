@@ -19,13 +19,6 @@ class Etudiant extends Utilisateur implements EtudiantInterface {
 		return "$this->nom/$this->prenom (Etudiant - $this->filiere)";
 	}
 
-	function __debugInfo(){
-		$debug = parent::__debugInfo();
-		$debug["filiere"] = $this->filiere;
-		$debug["linkedin"] = $this->lienLinkedin;
-		return $debug;
-	}
-
 	public function modifierProfil() {
 	}
 }

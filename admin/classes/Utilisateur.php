@@ -24,20 +24,12 @@ abstract class Utilisateur implements UtilisateurInterface {
 		self::$nb_users += 1;
 	}
 
-	function __destruct(){
-
-	}
-
 	function __isset($name) {
 		return property_exists($this, $name) && !empty($this->$name);
 	}
 
 	function __toString(){
 		return "$this->nom/$this->prenom ($this->role)";
-	}
-
-	function __debugInfo(){
-		return ['identite' => "$this->nom/$this->prenom", 'role' => $this->role];
 	}
 
 	public function __get($propriete) {
