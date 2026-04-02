@@ -22,15 +22,6 @@ class Faq implements FaqInterface
 		return "FAQ : $this->question";
 	}
 
-	function __debugInfo()
-	{
-		return [
-			'id' => $this->id,
-			'question' => $this->question,
-			'reponse' => substr($this->reponse, 0, 50)
-		];
-	}
-
 	function __destruct()
 	{
 

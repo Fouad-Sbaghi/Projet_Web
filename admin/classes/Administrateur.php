@@ -17,15 +17,6 @@ class Administrateur extends Utilisateur implements AdministrateurInterface {
 		return "$this->nom/$this->prenom (Admin)";
 	}
 
-	function __debugInfo(){
-
-		$debug = parent::__debugInfo();
-
-		$debug["tel"] = $this->telephonePro;
-
-		return $debug;
-	}
-
 	public function gererUtilisateurs() {
 	}
 

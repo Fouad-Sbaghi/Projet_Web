@@ -7,7 +7,7 @@ Autoloader::enregistrer();
 
 use model\Database;
 use model\UtilisateursModel;
-use model\UtilisateurException;
+use model\exceptions\UtilisateurException;
 
 if (!isset($_GET['id_user']) || empty($_GET['id_user'])) {
     header("Location: ../index.php");

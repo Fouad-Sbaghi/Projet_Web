@@ -4,7 +4,7 @@ $racine = "../";
 require_once '../admin/classes/Autoloader.php';
 Autoloader::enregistrer();
 use model\UtilisateursModel;
-use model\UtilisateurException;
+use model\exceptions\UtilisateurException;
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     header("Location: utilisateur.php");

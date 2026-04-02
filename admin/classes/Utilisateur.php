@@ -36,10 +36,6 @@ abstract class Utilisateur implements UtilisateurInterface {
 		return "$this->nom/$this->prenom ($this->role)";
 	}
 
-	function __debugInfo(){
-		return ['identite' => "$this->nom/$this->prenom", 'role' => $this->role];
-	}
-
 	public function __get($propriete) {
 		if (property_exists($this, $propriete)) {
 			return $this->$propriete;
