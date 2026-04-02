@@ -6,7 +6,7 @@ require_once '../classes/Autoloader.php';
 Autoloader::enregistrer();
 
 use model\ProjetModel;
-use model\ProjetException;
+use model\exceptions\ProjetException;
 use model\UtilisateursModel;
 use classes\Projet;
 

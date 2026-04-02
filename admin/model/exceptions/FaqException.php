@@ -1,7 +1,7 @@
 <?php
-namespace model;
+namespace model\exceptions;
 
-class UtilisateurException extends \Exception
+class FaqException extends \Exception
 {
     function __construct($message, $code = 0){
         parent::__construct($message, $code);

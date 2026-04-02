@@ -1,5 +1,5 @@
 <?php
-namespace model;
+namespace model\exceptions;
 
 class ProjetException extends \Exception
 {

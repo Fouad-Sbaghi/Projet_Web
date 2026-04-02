@@ -1,7 +1,7 @@
 <?php
 namespace model;
 
-use model\UtilisateurException;
+use model\exceptions\UtilisateurException;
 use model\Database;
 use PDO;
 

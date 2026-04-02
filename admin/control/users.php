@@ -4,7 +4,7 @@ require_once '../classes/Autoloader.php';
 Autoloader::enregistrer();
 
 use model\UtilisateursModel;
-use model\UtilisateurException;
+use model\exceptions\UtilisateurException;
 use classes\Etudiant;
 use classes\Administrateur;
 

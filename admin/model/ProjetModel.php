@@ -3,7 +3,7 @@ namespace model;
 
 use PDO;
 use classes\Projet;
-use model\ProjetException;
+use model\exceptions\ProjetException;
 
 class ProjetModel {
     private $connexion;
