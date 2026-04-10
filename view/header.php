@@ -18,8 +18,8 @@ $param_id = ($id_connecte > 0) ? "?id=" . $id_connecte : "";
 <div class="w3-bar w3-indigo w3-card banniere">
   <a class="w3-bar-item w3-button w3-hide-large w3-hide-medium" onclick="toggleMobileMenu()">&#9776;</a>
   
-  <a href="<?php echo $racine ?>index.php<?= $param_id ?>" class="w3-bar-item w3-hide-small">Accueil</a>
-  <a href="<?php echo $racine ?>control/recherche_cv.php<?= $param_id ?>" class="w3-bar-item w3-hide-small">Recherche des CV</a>
+  <a href="<?php echo $racine ?>accueil<?= $param_id ?>" class="w3-bar-item w3-hide-small">Accueil</a>
+  <a href="<?php echo $racine ?>cv<?= $param_id ?>" class="w3-bar-item w3-hide-small">Recherche des CV</a>
   <a href="<?php echo $racine ?>control/contact.php<?= $param_id ?>" class="w3-bar-item w3-hide-small">Contact</a>
   
   <?php if($id_connecte > 0): ?>

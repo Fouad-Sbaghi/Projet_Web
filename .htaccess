@@ -1,5 +1,8 @@
 RewriteEngine On
 
-RewriteRule ^index$ index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule recherche_cv$ control/recherche_cv.php
+RewriteRule ^accueil$ index.php
+RewriteRule ^cv$ control/recherche_cv.php
+RewriteRule ^contact$ control/contact.php   

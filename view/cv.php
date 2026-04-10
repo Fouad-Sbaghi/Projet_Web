@@ -7,7 +7,7 @@
         
         <h2><?= htmlspecialchars($projet->titre) ?></h2>
         
-        <img src="../view/images/<?= !empty($projet->image) ? htmlspecialchars($projet->image) : 'OIP.jpg' ?>" style="width:70%; margin: 16px auto; display: block;">
+        <img src="view/images/<?= !empty($projet->image) ? htmlspecialchars($projet->image) : 'OIP.jpg' ?>" style="width:70%; margin: 16px auto; display: block;">
         
         <div class="w3-container">
           <p><?= htmlspecialchars(substr($projet->description, 0, 50)) ?>...</p>
