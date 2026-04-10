@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^index$ index.php
+
+RewriteRule recherche_cv$ control/recherche_cv.php

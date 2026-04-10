@@ -77,3 +77,6 @@ admin/
 │   ├── AdministrateurInterface.php
 │   ├── ProjetInterface.php
 │   └── FaqInterface.php
+
+
+cookie pour afficher "Bonjour (Nom)"
