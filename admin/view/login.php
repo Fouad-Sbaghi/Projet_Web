@@ -8,7 +8,7 @@
   <title>Login Administration</title>
 </head>
 <body>
-  <form action="../admin/index.php" method="POST" class="w3-card w3-padding w3-white" style="max-width:400px; margin: 100px auto;">
+  <form action="index.php" method="POST" class="w3-card w3-padding w3-white" style="max-width:400px; margin: 100px auto;">
     <h1 class="w3-center">Connexion BackOffice</h1>
 
     <?php if(!empty($erreur)): ?>

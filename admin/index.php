@@ -23,12 +23,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $model = new UtilisateursModel();
         $utilisateur = $model->verifierConnexion($email, $pass);
 
-        if ($utilisateur->role === 'Admin') {
-            header("Location: control/dashboard.php");
-            exit();
-        } else {
-            $erreur = "Accès réservé aux administrateurs.";
-        }
+
+    if ($utilisateur->role === 'Admin') {
+        $_SESSION['user_id'] = $utilisateur->id;
+        $_SESSION['role']    = $utilisateur->role;
+        $_SESSION['prenom']  = $utilisateur->prenom;
+        header("Location: control/dashboard.php");
+        exit();
+    } else {
+        $erreur = "Accès réservé aux administrateurs.";
+    }
+
     } catch (UtilisateurException $e) {
         $erreur = $e->getMessage();
     } catch (\Exception $e) {
