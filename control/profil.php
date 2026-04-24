@@ -6,9 +6,7 @@ Autoloader::enregistrer();
 use model\UtilisateursModel;
 use model\exceptions\UtilisateurException;
 
-if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-    die("Erreur de sécurité CSRF. Veuillez rafraîchir la page.");
-}
+
 $id = intval($_GET['id']);
 $model = new UtilisateursModel();
 $message = "";
@@ -24,6 +22,9 @@ if (isset($_GET['action']) && $_GET['action'] === 'supprimer') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'modifier') {
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    die("Erreur de sécurité CSRF. Veuillez rafraîchir la page.");
+    }
     try {
         $utilisateur = $model->getUtilisateurById($id);
         $utilisateur->nom = htmlspecialchars($_POST['nom']);

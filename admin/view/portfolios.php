@@ -8,6 +8,8 @@
     <div class="w3-panel w3-pale-yellow w3-padding-16">
         <h4>Modifier le projet</h4>
         <form method="POST" action="portfolios.php?id_user=<?= $id_user ?>">
+            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+
             <input type="hidden" name="action" value="modifier">
             <input type="hidden" name="id_projet" value="<?= htmlspecialchars($projet_a_modifier->id) ?>">
             

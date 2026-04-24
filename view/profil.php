@@ -1,3 +1,4 @@
+<?php if (session_status() === PHP_SESSION_NONE) { session_start(); } ?>
 <main class="w3-container w3-padding-32">
   <h1 class="w3-center w3-text-indigo">Mon Profil</h1>
   <?= $message ?? '' ?>

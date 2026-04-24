@@ -1,10 +1,9 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
-$racine = "../";
+$racine = "";
 $message_contact = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 1. Vérification du token CSRF
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         die("Erreur de sécurité CSRF.");
     }

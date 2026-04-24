@@ -4,6 +4,8 @@
     <?= $message ?? '' ?>
 
     <form class="w3-container" method="POST" action="mail.php?id_user=<?= $id_user ?>">
+        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+
         <label>Sujet du mail</label>
         <input class="w3-input w3-border w3-margin-bottom" type="text" name="sujet" required>
 
@@ -17,7 +19,7 @@
     <h4>Liste des destinataires :</h4>
     <ul class="w3-ul">
         <?php foreach ($liste_users as $u): ?>
-            <li><?= htmlspecialchars($u['nom'] . ' ' . $u['prenom']) ?> - <?= htmlspecialchars($u['email']) ?></li>
+            <li><?= htmlspecialchars($u->nom . ' ' . $u->prenom) ?> - <?= htmlspecialchars($u->email) ?></li>
         <?php endforeach; ?>
     </ul>
 </div>

@@ -1,4 +1,4 @@
-
+<?php if (session_status() === PHP_SESSION_NONE) { session_start(); } ?>
 <main class="cv-portf" style="padding: 40px;">
     <div class="w3-card-4 w3-white" style="max-width:800px; margin: 0 auto;">
         <h2 class="w3-center w3-padding"><?= htmlspecialchars($cv->titre) ?></h2>
