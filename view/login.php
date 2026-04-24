@@ -1,5 +1,6 @@
 <main>
   <form action="utilisateur.php" method="POST" class="form2">
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
     <h1>Connexion</h1>
 
     <label for="email">Adresse Email :</label><br>

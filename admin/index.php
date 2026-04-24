@@ -6,6 +6,13 @@ Autoloader::enregistrer();
 use model\UtilisateursModel;
 use model\exceptions\UtilisateurException;
 
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: ../index.php");
+    exit();
+}
+
 $erreur = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -17,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $utilisateur = $model->verifierConnexion($email, $pass);
 
         if ($utilisateur->role === 'Admin') {
-            header("Location: control/dashboard.php?id_user=" . $utilisateur->id);
+            header("Location: control/dashboard.php");
             exit();
         } else {
             $erreur = "Accès réservé aux administrateurs.";

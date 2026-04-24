@@ -4,6 +4,7 @@
   <?= $message_contact ?? '' ?>
 
   <form method="POST" action="<?= $racine ?>control/contact.php<?= isset($id_connecte) && $id_connecte > 0 ? '?id='.$id_connecte : '' ?>" class="w3-card w3-padding w3-white w3-margin-auto fr" style="width:100%; max-width:600px;">
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
     <label class="w3-text-indigo" for="fname">Prénom :</label>
     <input class="w3-input w3-border w3-margin-bottom" type="text" id="fname" name="fname" required>

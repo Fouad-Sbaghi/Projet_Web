@@ -6,9 +6,8 @@ Autoloader::enregistrer();
 use model\UtilisateursModel;
 use model\exceptions\UtilisateurException;
 
-if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: utilisateur.php");
-    exit();
+if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    die("Erreur de sécurité CSRF. Veuillez rafraîchir la page.");
 }
 $id = intval($_GET['id']);
 $model = new UtilisateursModel();

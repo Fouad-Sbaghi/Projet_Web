@@ -7,6 +7,8 @@
     <div class="w3-panel w3-light-grey w3-padding-16">
         <h4>Ajouter un utilisateur</h4>
         <form method="POST" action="users.php?id_user=<?= $id_user ?>">
+            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+            
             <input type="hidden" name="action" value="ajouter">
             
             <label>Nom</label>

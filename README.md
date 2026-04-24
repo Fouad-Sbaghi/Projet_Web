@@ -80,3 +80,32 @@ admin/
 
 
 cookie pour afficher "Bonjour (Nom)"
+
+Documentation Client - Plateforme de Portfolios
+
+1. Fonctionnalités Principales :
+
+Côté Public : Affichage d'une page d'accueil, galerie de portfolios des étudiants avec détail, formulaire de contact (envoi d'e-mail).
+
+Espace Utilisateur : Création de compte (géré par l'admin), modification de profil, suppression de compte.
+
+Espace Administration : Tableau de bord statistique, gestion complète (CRUD) des utilisateurs, des projets/portfolios, et de la FAQ. Envoi d'e-mails groupés.
+
+2. Technologies utilisées :
+
+Backend : PHP (Modèle MVC, Programmation Orientée Objet, PDO, Sessions/Cookies sécurisés)
+
+Base de données : PostgreSQL
+
+Frontend : HTML5, CSS3, W3.CSS (Framework responsive), Vanilla JavaScript
+
+Sécurité : Hachage de mot de passe, tokens CSRF, requêtes préparées (anti-injection SQL).
+
+3. Accès Administrateur :
+(Pensez à insérer ici le compte admin créé dans votre base de données)
+
+Lien de connexion : /admin/index.php
+
+Identifiant (Email) : admin@test.fr
+
+Mot de passe : admin123

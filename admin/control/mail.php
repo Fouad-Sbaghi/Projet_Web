@@ -5,17 +5,21 @@ Autoloader::enregistrer();
 
 use model\UtilisateursModel;
 
-if (!isset($_GET['id_user']) || empty($_GET['id_user'])) {
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
     header("Location: ../index.php");
     exit();
 }
-$id_user = intval($_GET['id_user']);
+$id_user = $_SESSION['user_id'];
 
 $message = "";
 $model_user = new UtilisateursModel();
 $liste_users = $model_user->getAllUtilisateurs();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("Erreur CSRF. Veuillez rafraîchir la page.");
+    }
     $sujet = htmlspecialchars($_POST['sujet']);
     $contenu = htmlspecialchars($_POST['message']);
 
