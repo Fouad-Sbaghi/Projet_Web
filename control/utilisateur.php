@@ -1,6 +1,6 @@
 <?php
 
-$racine = "../";
+$racine = "";
 
 require_once '../admin/classes/Autoloader.php';
 Autoloader::enregistrer();

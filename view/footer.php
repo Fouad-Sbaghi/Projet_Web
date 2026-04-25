@@ -3,7 +3,7 @@
   <p class="w3-text-white">&copy; 2026 Fouad SBAGHI - Nassim Benchenni</p>
   <p>
       <a href="<?php echo $racine ?>mentions_legales" class="w3-text-white">Mentions Légales & CGV</a> | 
-      <a href="<?php echo $racine ?>sitemap" class="w3-text-white">Plan du site</a>
+      <a href="<?php echo $racine ?>sitemap_" class="w3-text-white">Plan du site</a>
   </p>
 </footer>
 <?php if(!isset($_COOKIE['cookie_consent'])): ?>

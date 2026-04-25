@@ -25,10 +25,10 @@ $id_connecte = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
   <a href="<?php echo $racine ?>contact" class="w3-bar-item w3-hide-small">Contact</a>
   
   <?php if($id_connecte > 0): ?>
-    <a href="<?php echo $racine ?>control/profil.php?id=<?= $id_connecte ?>" class="w3-bar-item w3-hide-small">Mon Profil</a>
+    <a href="<?php echo $racine ?>profil/<?= $id_connecte ?>" class="w3-bar-item w3-hide-small">Mon Profil</a>
     <a href="<?php echo $racine ?>admin/index.php?logout=1" class="w3-bar-item w3-hide-small">Déconnexion</a>
   <?php else: ?>
-    <a href="<?php echo $racine ?>control/utilisateur.php" class="w3-bar-item w3-hide-small">Login</a>
+    <a href="<?php echo $racine ?>login" class="w3-bar-item w3-hide-small">Login</a>
   <?php endif; ?>
 </div>
 
@@ -37,10 +37,10 @@ $id_connecte = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
   <a href="<?php echo $racine ?>cv" class="w3-bar-item w3-button">Recherche des CV</a>
   <a href="<?php echo $racine ?>contact" class="w3-bar-item w3-button">Contact</a>
   <?php if($id_connecte > 0): ?>
-    <a href="<?php echo $racine ?>control/profil.php?id=<?= $id_connecte ?>" class="w3-bar-item w3-button">Mon Profil</a>
-    <a href="<?php echo $racine ?>admin/index.php?logout=1" class="w3-bar-item w3-button">Déconnexion</a>
+    <a href="<?php echo $racine ?>profil/<?= $id_connecte ?>" class="w3-bar-item w3-hide-small">Mon Profil</a>
+    <a href="<?php echo $racine ?>admin/index.php?logout=1" class="w3-bar-item w3-hide-small">Déconnexion</a>
   <?php else: ?>
-    <a href="<?php echo $racine ?>control/utilisateur.php" class="w3-bar-item w3-button">Login</a>
+    <a href="<?php echo $racine ?>login" class="w3-bar-item w3-hide-small">Login</a>
   <?php endif; ?>
 </div>
 

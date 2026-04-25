@@ -8,4 +8,6 @@ RewriteRule ^cv$ control/recherche_cv.php
 RewriteRule ^contact$ control/contact.php
 RewriteRule ^portfolio/([0-9]+)$ control/portfolio.php?id=$1
 RewriteRule ^mentions_legales$ control/mentions_legales.php
-RewriteRule ^sitemap$ control/sitemap.php
+RewriteRule ^sitemap_$ control/sitemap_page.php
+RewriteRule ^login$ control/utilisateur.php
+RewriteRule ^profil/([0-9]+)$ control/profil.php?id=$1
