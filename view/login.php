@@ -1,5 +1,5 @@
 <main>
-  <form action="utilisateur.php" method="POST" class="form2">
+  <form action="<?= $racine ?>login" method="POST" class="form2">
     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
     <h1>Connexion</h1>
 

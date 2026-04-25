@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $racine = "";
 
@@ -29,9 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['role'] = $utilisateur->role;
         $_SESSION['prenom'] = $utilisateur->prenom;
 
-        // Si l'utilisateur a accepté les cookies, on crée le cookie "Bonjour"
         if(isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accept') {
-            setcookie("user_name", $utilisateur->prenom, time() + (86400 * 30), "/");
+            setcookie("user_name", $utilisateur->prenom, time() + (86400 * 30));
         }
 
         if ($utilisateur->role === 'Admin') {
