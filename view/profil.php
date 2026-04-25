@@ -17,6 +17,5 @@
       <input class="w3-input w3-border w3-margin-bottom" type="text" name="linkedin" value="<?= htmlspecialchars($utilisateur->lienLinkedin ?? '') ?>">
       <input class="w3-button w3-indigo w3-block w3-margin-bottom" type="submit" value="Modifier">
     </form>
-    <a href="<?= $racine ?>control/profil.php?id=<?= $utilisateur->id ?>&action=supprimer" onclick="return confirm('Supprimer votre compte ?');" class="w3-button w3-red w3-block">Supprimer mon compte</a>
-  </div>
+    <a href="<?= $racine ?>control/profil.php?id=<?= $utilisateur->id ?>&action=supprimer&csrf_token=<?= $_SESSION['csrf_token'] ?>" onclick="return confirm('Supprimer votre compte ?');" class="w3-button w3-red w3-block">Supprimer mon compte</a>
 </main>

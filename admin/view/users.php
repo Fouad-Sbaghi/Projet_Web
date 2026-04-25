@@ -61,9 +61,9 @@
                         <td><?php echo htmlspecialchars($u->prenom); ?></td>
                         <td><?php echo htmlspecialchars($u->role); ?></td>
                         <td>
-                            <a href="users.php?id_user=<?= $id_user ?>&action=supprimer&id_suppr=<?= $u->id ?>" 
-                               onclick="return confirm('Supprimer cet utilisateur et tous ses projets ?');"
-                               class="w3-button w3-red w3-small">Supprimer</a>
+                            <a href="users.php?action=supprimer&id_suppr=<?= $u->id ?>&csrf_token=<?= $_SESSION['csrf_token'] ?>" 
+                            onclick="return confirm('Supprimer cet utilisateur et tous ses projets ?');"
+                            class="w3-button w3-red w3-small">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

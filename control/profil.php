@@ -8,10 +8,20 @@ use model\exceptions\UtilisateurException;
 
 
 $id = intval($_GET['id']);
+
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
+if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] !== $id) {
+    die("Accès refusé. Vous ne pouvez modifier que votre propre profil.");
+}
+
 $model = new UtilisateursModel();
 $message = "";
 
 if (isset($_GET['action']) && $_GET['action'] === 'supprimer') {
+    if (!isset($_GET['csrf_token']) || $_GET['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("Erreur de sécurité CSRF.");
+    }
+    
     try {
         $model->supprimerUtilisateur($id);
         header("Location: ../index.php");

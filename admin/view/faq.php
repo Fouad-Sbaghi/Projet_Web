@@ -58,7 +58,7 @@
                         <td>
                             <a href="faq.php?id_user=<?= $id_user ?>&action=editer&id_faq=<?= $f->id ?>" 
                                class="w3-button w3-blue w3-small">Modifier</a>
-                            <a href="faq.php?id_user=<?= $id_user ?>&action=supprimer&id_faq=<?= $f->id ?>" 
+                            <a href="faq.php?id_user=<?= $id_user ?>&action=supprimer&id_faq=<?= $f->id ?> &csrf_token=<?= $_SESSION['csrf_token'] ?>" 
                                onclick="return confirm('Supprimer cette FAQ ?');"
                                class="w3-button w3-red w3-small">Supprimer</a>
                         </td>

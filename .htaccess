@@ -7,5 +7,5 @@ RewriteRule ^accueil$ index.php
 RewriteRule ^cv$ control/recherche_cv.php
 RewriteRule ^contact$ control/contact.php
 RewriteRule ^portfolio/([0-9]+)$ control/portfolio.php?id=$1
-RewriteRule ^mentions-legales$ view/mentions_legales.php
-RewriteRule ^sitemap$ view/sitemap.php
+RewriteRule ^mentions_legales$ control/mentions_legales.php
+RewriteRule ^sitemap$ control/sitemap.php

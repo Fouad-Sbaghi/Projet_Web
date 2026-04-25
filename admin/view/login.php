@@ -9,6 +9,8 @@
 </head>
 <body>
   <form action="index.php" method="POST" class="w3-card w3-padding w3-white" style="max-width:400px; margin: 100px auto;">
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+
     <h1 class="w3-center">Connexion BackOffice</h1>
 
     <?php if(!empty($erreur)): ?>

@@ -75,10 +75,10 @@
                             <td><?php echo htmlspecialchars(substr($p->description, 0, 30)) . '...'; ?></td>
                             <td><?php echo htmlspecialchars($p->image); ?></td>
                             <td>
-                                <a href="portfolios.php?id_user=<?= $id_user ?>&action=editer&id_projet=<?= $p->id ?>" 
+                                <a href="portfolios.php?id_user=<?= $id_user ?>&action=editer&id_projet=<?= $p->id ?>&csrf_token=<?= $_SESSION['csrf_token'] ?>" 
                                    class="w3-button w3-blue w3-small">Éditer</a>
                                 
-                                <a href="portfolios.php?id_user=<?= $id_user ?>&action=supprimer&id_projet=<?= $p->id ?>" 
+                                <a href="portfolios.php?id_user=<?= $id_user ?>&action=supprimer&id_projet=<?= $p->id ?> &csrf_token=<?= $_SESSION['csrf_token'] ?>" 
                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce projet ?');"
                                    class="w3-button w3-red w3-small">Supprimer</a>
                             </td>

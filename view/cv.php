@@ -3,7 +3,7 @@
     
     <?php foreach ($liste_projets as $projet): ?>
     
-      <a href="<?php echo $racine?>control/portfolio.php?id=<?= $projet->id ?>" class="w3-card-4 w3-center cv-card">
+      <a href="<?php echo $racine?>portfolio/<?= $projet->id ?>" class="w3-card-4 w3-center cv-card">
         
         <h2><?= htmlspecialchars($projet->titre) ?></h2>
         
