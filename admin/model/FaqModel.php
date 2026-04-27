@@ -5,13 +5,26 @@ use PDO;
 use classes\Faq;
 use model\exceptions\FaqException;
 
+/**
+ * Classe FaqModel
+ * Gère les opérations CRUD sur la table FAQ via PDO.
+ * Utilise des requêtes préparées et des transactions.
+ */
 class FaqModel {
+    /** @var \PDO Connexion à la base de données */
     private $connexion;
 
+    /**
+     * Initialise la connexion à la base de données
+     */
     public function __construct() {
         $this->connexion = Database::getConnexion();
     }
 
+    /**
+     * Récupère toutes les FAQ sous forme d'objets Faq (FETCH_CLASS)
+     * @return Faq[] Tableau d'objets Faq
+     */
     public function getAllFaqs() {
         $sql = "SELECT id_faq AS id, question, reponse FROM FAQ";
         $stmt = $this->connexion->query($sql);
@@ -19,6 +32,12 @@ class FaqModel {
         return $stmt->fetchAll();
     }
 
+    /**
+     * Récupère une FAQ par son identifiant
+     * @param int $id Identifiant de la FAQ
+     * @return Faq Objet Faq
+     * @throws FaqException Si la FAQ n'existe pas
+     */
     public function getFaqById($id) {
         $sql = "SELECT id_faq AS id, question, reponse FROM FAQ WHERE id_faq = :id";
         $stmt = $this->connexion->prepare($sql);
@@ -33,6 +52,12 @@ class FaqModel {
         return $faq;
     }
 
+    /**
+     * Insère une nouvelle FAQ en base de données
+     * @param \classes\Faq $faq Objet Faq à insérer
+     * @return bool true si succès
+     * @throws FaqException En cas d'erreur SQL
+     */
     public function insererFaq(\classes\Faq $faq) {
         try {
             $this->connexion->beginTransaction();
@@ -51,6 +76,12 @@ class FaqModel {
         }
     }
 
+    /**
+     * Modifie une FAQ existante en base de données
+     * @param \classes\Faq $faq Objet Faq avec les nouvelles valeurs
+     * @return bool true si succès
+     * @throws FaqException En cas d'erreur SQL
+     */
     public function modifierFaq(\classes\Faq $faq) {
         try {
             $this->connexion->beginTransaction();
@@ -70,6 +101,12 @@ class FaqModel {
         }
     }
 
+    /**
+     * Supprime une FAQ par son identifiant
+     * @param int $id Identifiant de la FAQ
+     * @return bool true si succès
+     * @throws FaqException En cas d'erreur SQL
+     */
     public function supprimerFaq($id) {
         try {
             $this->connexion->beginTransaction();

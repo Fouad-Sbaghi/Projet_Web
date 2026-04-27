@@ -1,5 +1,7 @@
 <?php
 
+$racine = "../";
+
 require_once '../classes/Autoloader.php';
 Autoloader::enregistrer();
 

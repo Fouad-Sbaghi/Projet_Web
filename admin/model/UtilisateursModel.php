@@ -5,14 +5,30 @@ use model\exceptions\UtilisateurException;
 use model\Database;
 use PDO;
 
+/**
+ * Classe UtilisateursModel
+ * Gère les opérations CRUD sur la table UTILISATEURS via PDO.
+ * Gère la vérification de connexion avec password_verify.
+ */
 class UtilisateursModel
 {
+    /** @var \PDO Connexion à la base de données */
     private $connexion;
 
+    /**
+     * Initialise la connexion à la base de données
+     */
     public function __construct() {
         $this->connexion = Database::getConnexion();
     }
 
+    /**
+     * Vérifie les identifiants de connexion d'un utilisateur
+     * @param string $email Adresse email
+     * @param string $pass Mot de passe en clair
+     * @return \classes\Etudiant|\classes\Administrateur Objet utilisateur
+     * @throws UtilisateurException Si identifiants incorrects
+     */
     public function verifierConnexion($email, $pass) {
         
         $sql = "SELECT id_user AS id, nom, prenom, email, mot_de_passe AS motdepasse, role, filiere, lien_linkedin, telephone_pro FROM UTILISATEURS WHERE email = :email";
@@ -39,6 +55,10 @@ class UtilisateursModel
         }
     }
 
+    /**
+     * Récupère tous les utilisateurs sous forme d'objets
+     * @return array Tableau d'objets Etudiant et Administrateur
+     */
     public function getAllUtilisateurs(){
         $sql = "SELECT id_user AS id, nom, prenom, email, role FROM UTILISATEURS";
         $stmt = $this->connexion->query($sql);
@@ -54,6 +74,12 @@ class UtilisateursModel
         return $users;
     }
 
+    /**
+     * Récupère un utilisateur par son identifiant
+     * @param int $id Identifiant de l'utilisateur
+     * @return \classes\Etudiant|\classes\Administrateur Objet utilisateur
+     * @throws UtilisateurException Si l'utilisateur n'existe pas
+     */
     public function getUtilisateurById($id){
         $sql = "SELECT id_user AS id, nom, prenom, email, mot_de_passe AS motdepasse, role, filiere, lien_linkedin, telephone_pro FROM UTILISATEURS WHERE id_user = :id";
         $stmt = $this->connexion->prepare($sql);
@@ -73,6 +99,12 @@ class UtilisateursModel
         }
     }
 
+    /**
+     * Insère un nouvel utilisateur avec hashage du mot de passe
+     * @param \classes\Etudiant|\classes\Administrateur $user Objet utilisateur
+     * @return bool true si succès
+     * @throws UtilisateurException En cas d'erreur (email déjà utilisé, etc.)
+     */
     public function insererUtilisateur($user){
         try {
             $this->connexion->beginTransaction();
@@ -83,7 +115,6 @@ class UtilisateursModel
             $stmt->bindValue(':nom', $user->nom);
             $stmt->bindValue(':prenom', $user->prenom);
             $stmt->bindValue(':email', $user->email);
-
             $stmt->bindValue(':mdp', password_hash($user->motDePasse, PASSWORD_DEFAULT));
             $stmt->bindValue(':role', $user->role);
             $stmt->bindValue(':filiere', $user->filiere ?? '');
@@ -99,6 +130,12 @@ class UtilisateursModel
         }
     }
 
+    /**
+     * Modifie un utilisateur existant
+     * @param \classes\Etudiant|\classes\Administrateur $user Objet utilisateur
+     * @return bool true si succès
+     * @throws UtilisateurException En cas d'erreur SQL
+     */
     public function modifierUtilisateur($user){
         try {
             $this->connexion->beginTransaction();
@@ -123,6 +160,12 @@ class UtilisateursModel
         }
     }
 
+    /**
+     * Supprime un utilisateur et ses projets associés
+     * @param int $id Identifiant de l'utilisateur
+     * @return bool true si succès
+     * @throws UtilisateurException En cas d'erreur SQL
+     */
     public function supprimerUtilisateur($id){
         try {
             $this->connexion->beginTransaction();

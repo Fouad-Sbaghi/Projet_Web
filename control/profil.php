@@ -7,6 +7,10 @@ use model\UtilisateursModel;
 use model\exceptions\UtilisateurException;
 
 
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    header("Location: " . $racine . "accueil");
+    exit();
+}
 $id = intval($_GET['id']);
 
 if (session_status() === PHP_SESSION_NONE) { session_start(); }

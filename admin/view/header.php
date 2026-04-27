@@ -24,5 +24,5 @@ $id_connecte = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
 <body class="w3-light-grey">
     <div class="w3-bar w3-dark-grey w3-padding barre-haut">
         <span class="w3-bar-item w3-large">Administration</span>
-        <a href="../index.php" class="w3-bar-item w3-button w3-right">Déconnexion</a>
+        <a href="../index.php?logout=1" class="w3-bar-item w3-button w3-right">Déconnexion</a>
     </div>

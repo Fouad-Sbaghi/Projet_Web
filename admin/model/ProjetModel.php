@@ -5,19 +5,38 @@ use PDO;
 use classes\Projet;
 use model\exceptions\ProjetException;
 
+/**
+ * Classe ProjetModel
+ * Gère les opérations CRUD sur la table PROJETS via PDO.
+ * Utilise des requêtes préparées et des transactions.
+ */
 class ProjetModel {
+    /** @var \PDO Connexion à la base de données */
     private $connexion;
 
+    /**
+     * Initialise la connexion à la base de données
+     */
     public function __construct() {
         $this->connexion = Database::getConnexion();
     }
 
+    /**
+     * Récupère tous les projets sous forme d'objets Projet (FETCH_CLASS)
+     * @return Projet[] Tableau d'objets Projet
+     */
     public function getAllProjets() {
         $sql = "SELECT id_projet AS id, titre, description, image_url AS image, id_user FROM PROJETS";
         $stmt = $this->connexion->query($sql);
         return $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classes\Projet');
     }
 
+    /**
+     * Récupère un projet par son identifiant avec les infos de l'étudiant
+     * @param int $id Identifiant du projet
+     * @return Projet Objet Projet
+     * @throws ProjetException Si le projet n'existe pas
+     */
     public function getProjetById($id) {
         $sql = "SELECT p.id_projet AS id, p.titre, p.description, p.image_url AS image,
                        u.lien_linkedin, u.nom, u.prenom, p.id_user
@@ -36,6 +55,13 @@ class ProjetModel {
         return $projet;
     }
 
+    /**
+     * Insère un nouveau projet en base de données
+     * @param \classes\Projet $projet Objet Projet à insérer
+     * @param int $id_user Identifiant de l'étudiant propriétaire
+     * @return bool true si succès
+     * @throws ProjetException En cas d'erreur SQL
+     */
     public function inserer(\classes\Projet $projet, $id_user) {
         try {
             $this->connexion->beginTransaction();
@@ -57,6 +83,12 @@ class ProjetModel {
         }
     }
 
+    /**
+     * Modifie un projet existant en base de données
+     * @param \classes\Projet $projet Objet Projet avec les nouvelles valeurs
+     * @return bool true si succès
+     * @throws ProjetException En cas d'erreur SQL
+     */
     public function modifierProjet(\classes\Projet $projet) {
         try {
             $this->connexion->beginTransaction();
@@ -77,6 +109,12 @@ class ProjetModel {
         }
     }
 
+    /**
+     * Supprime un projet par son identifiant
+     * @param int $id_projet Identifiant du projet
+     * @return bool true si succès
+     * @throws ProjetException En cas d'erreur SQL
+     */
     public function supprimer($id_projet) {
         try {
             $this->connexion->beginTransaction();
