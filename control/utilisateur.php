@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['role'] = $utilisateur->role;
         $_SESSION['prenom'] = $utilisateur->prenom;
 
-        if(isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accept') {
+        if(isset($_COOKIE['cookie_perso']) && $_COOKIE['cookie_perso'] === 'accept') {
             setcookie("user_name", $utilisateur->prenom, time() + (86400 * 30), "/");
         }
 
