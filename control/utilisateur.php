@@ -33,14 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['prenom'] = $utilisateur->prenom;
 
         if(isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] == 'accept') {
-            setcookie("user_name", $utilisateur->prenom, time() + (86400 * 30));
+            setcookie("user_name", $utilisateur->prenom, time() + (86400 * 30), "/");
         }
 
         if ($utilisateur->role === 'Admin') {
             header("Location: ../admin/control/dashboard.php");
             exit();
         } else {
-            header("Location: ../index.php");
+            header("Location: " . $racine . "accueil");
             exit();
         }
 

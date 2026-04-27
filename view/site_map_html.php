@@ -6,6 +6,6 @@
         <li><a href="<?= $racine ?>contact">Contact</a></li>
         <li><a href="<?= $racine ?>login">Connexion / Espace Membre</a></li>
         <li><a href="<?= $racine ?>mentions_legales">Mentions Légales & CGV</a></li>
-        <li><a href="<?= $racine ?>sitemap_ ">Plan du site</a></li>
+        <li><a href="<?= $racine ?>sitemap_">Plan du site</a></li>
     </ul>
 </main>

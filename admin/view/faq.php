@@ -28,7 +28,8 @@
     <div class="w3-panel w3-light-grey w3-padding-16">
         <h4>Ajouter une question</h4>
         <form method="POST" action="faq.php?id_user=<?= $id_user ?>">
-            <input type="hidden" name="action" value="ajouter">
+        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+        <input type="hidden" name="action" value="ajouter">
             
             <label>Question</label>
             <input class="w3-input w3-border w3-margin-bottom" type="text" name="question" required>

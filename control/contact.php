@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 3. Envoi du mail
     if (!empty($prenom) && !empty($nom) && !empty($contenu)) {
-        $to = "poubbelle05@gmail.com";
+        $to = "nassim.benchenni@alumni.univ-avignon.fr";
         $subject = "Nouveau contact de $prenom $nom";
         $headers = "From: contact@votresite.com\r\n";
         $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
