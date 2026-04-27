@@ -9,7 +9,7 @@ if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
-// Récupération de l'ID via la session au lieu de $_GET
+// Récupération de l'ID via la session
 $id_connecte = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
 ?>
 

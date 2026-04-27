@@ -8,12 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Erreur de sécurité CSRF.");
     }
 
-    // 2. Récupération des données du formulaire
+    // Récupération des données du formulaire
     $prenom = htmlspecialchars($_POST['fname'] ?? '');
     $nom = htmlspecialchars($_POST['lname'] ?? '');
     $contenu = htmlspecialchars($_POST['message'] ?? '');
 
-    // 3. Envoi du mail
+    // Envoi du mail
     if (!empty($prenom) && !empty($nom) && !empty($contenu)) {
         $to = "nassim.benchenni@alumni.univ-avignon.fr";
         $subject = "Nouveau contact de $prenom $nom";
