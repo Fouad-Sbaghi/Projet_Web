@@ -17,7 +17,7 @@
             </label>
             <label style="cursor: pointer;">
                 <input type="checkbox" id="cookiePerso">
-                <strong>Personnalisation</strong>
+                <strong>Prénom utilisé</strong>
             </label>
         </div>
 
